@@ -1,0 +1,8 @@
+{
+  "label": "Developer Guide",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Developer your own LLM applications on the top of LlamaEdge."
+  }
+}
