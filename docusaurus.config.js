@@ -72,7 +72,7 @@ const config = {
             label: 'Tutorial',
           },
           {
-            href: 'https://github.com/LlamaEdge/LlamaEdge,
+            href: 'https://github.com/LlamaEdge/LlamaEdge',
             label: 'GitHub',
             position: 'right',
           },
