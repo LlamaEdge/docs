@@ -6,20 +6,38 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-    branches: [ main ]
+  
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'
 
-      - name: Build
+      - name: build
         run: |
           npm install
           npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
