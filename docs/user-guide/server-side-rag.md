@@ -105,7 +105,7 @@ curl 'http://localhost:6333/collections/default'
 
 Of course, the `/create_rag` API is rather primitive in chunking documents and creating embeddings. For many use cases, you should [create your own embedding vectors](#use-your-own-embedding-algos).
 
-> The `/create_rag` is a simple combination of several more basic API endpoints provided by the API server. You can learn more about them in the developer guide.
+> The `/create_rag` is a simple combination of [several more basic API endpoints](../developer-guide/create-embeddings-collection.md) provided by the API server. You can learn more about them in the developer guide.
 
 ## Chat with supplemental RAG knowledge
 
