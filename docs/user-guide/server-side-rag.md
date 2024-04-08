@@ -20,10 +20,10 @@ Install the [WasmEdge Runtime](https://github.com/WasmEdge/WasmEdge), our cross-
 curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- --plugins wasmedge_rustls wasi_nn-ggml
 ```
 
-Download the pre-built binary for the LlamaEdge API server.
+Download the pre-built binary for the LlamaEdge API server with RAG support.
 
 ```
-curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llama-api-server.wasm
+curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/rag-api-server.wasm
 ```
 
 And the chatbot web UI for the API server.
@@ -62,39 +62,27 @@ nohup docker run -d -p 6333:6333 -p 6334:6334 \
 
 ## Create knowledge embeddings
 
-The LlamaEdge API server provides an API endpoint `/create_rag` that takes a text file, segments it into small chunks, turns the chunks into embeddings (i.e., vectors), and then stores the embeddings into the Qdrant database. Note that for many use cases, you will need to create your own knowledge embeddings. You can jump ahead to the [Use your own embedding algos](#use-your-own-embedding-algos) section to learn how to do that!
+The LlamaEdge RAG API server provides an API endpoint `/create/rag` that takes a text file, segments it into small chunks, turns the chunks into embeddings (i.e., vectors), and then stores the embeddings into the Qdrant database. Note that for many use cases, you will need to create your own knowledge embeddings. You can jump ahead to the [Use your own embedding algos](#use-your-own-embedding-algos) section to learn how to do that!
 
-Let’s start the LlamaEdge API server with Qdrant first. The LlamaEdge API server will be started on port 8080 by default.
+Let’s start the LlamaEdge RAG API server on port 8080. By default, it connects to the local Qdrant server.
 
 ```
 wasmedge --dir .:. \
    --nn-preload default:GGML:AUTO:Llama-2-7b-chat-hf-Q5_K_M.gguf \
    --nn-preload embedding:GGML:AUTO:all-MiniLM-L6-v2-ggml-model-f16.gguf \
-   llama-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
+   rag-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
      --model-name Llama-2-7b-chat-hf-Q5_K_M,all-MiniLM-L6-v2-ggml-model-f16 \
      --ctx-size 4096,384 \
-     --qdrant-url http://127.0.0.1:6333 \
-     --qdrant-collection-name default \   
-     --qdrant-limit 3 \
-     --qdrant-score-threshold 0.75 \
+     --rag-prompt "Use the following context to answer the question.\n----------------\n" \
      --log-prompts --log-stat
 ```
 
-The CLI arguments for WasmEdge are self-explanatory.
-
-* The `--nn-proload` loads two models we just downloaded. The chat model is named `default` and the embedding model is named `embedding` .
-* The `llama-api-server.wasm` is the API server app. It is written in Rust using LlamaEdge SDK, and is already compiled to cross-platform Wasm binary.
-* The `--model-name` specifies the names of those two models so that API calls can to routed to specific models.
-* The `--ctx-size` specifies the max input size for each of those two models listed in `--model-name` .
-* The `--qdrant-url` is the API URL to the Qdrant server we plan to use. 
-* The other `--qdrant-*` arguments will be explained later when we discuss chatting with the RAG server.
-
-Next, you can submit a link to a text document for it to turn into embeddings. The document here is a travel guide for Paris France.
+The CLI arguments are explained in the next section when we start the RAG API server for chatting. For now, you can simply submit a text document for it to turn into embeddings. The document here is a travel guide for Paris France.
 
 ```
 curl -LO https://huggingface.co/datasets/gaianet/paris/raw/main/paris.txt
 
-curl -X POST http://127.0.0.1:8080/v1/create_rag -F "file=@paris.txt"
+curl -X POST http://127.0.0.1:8080/v1/create/rag -F "file=@paris.txt"
 ```
 
 Now, the Qdrant database has a vector collection called `default` which contains embeddings from the Paris guide. You can see the stats of the vector collection as follows.
@@ -103,37 +91,39 @@ Now, the Qdrant database has a vector collection called `default` which contains
 curl 'http://localhost:6333/collections/default'
 ```
 
-Of course, the `/create_rag` API is rather primitive in chunking documents and creating embeddings. For many use cases, you should [create your own embedding vectors](#use-your-own-embedding-algos).
+Of course, the `/create/rag` API is rather primitive in chunking documents and creating embeddings. For many use cases, you should [create your own embedding vectors](#use-your-own-embedding-algos).
 
-> The `/create_rag` is a simple combination of [several more basic API endpoints](../developer-guide/create-embeddings-collection.md) provided by the API server. You can learn more about them in the developer guide.
+> The `/create/rag` is a simple combination of [several more basic API endpoints](../developer-guide/create-embeddings-collection.md) provided by the API server. You can learn more about them in the developer guide.
 
 ## Chat with supplemental RAG knowledge
 
-When you start the LlamaEdge API server with Qdrant options, it will take every new user request, search relevant embeddings based on the request, and then add search results to the prompt. 
-
+When you start the LlamaEdge RAG API server, it will take every new user request, search relevant embeddings based on the request, and then add search results to the prompt. It is the same command as in the previous section becuase we use the same RAG API server for embedding and chatting.
 
 ```
 wasmedge --dir .:. \
    --nn-preload default:GGML:AUTO:Llama-2-7b-chat-hf-Q5_K_M.gguf \
    --nn-preload embedding:GGML:AUTO:all-MiniLM-L6-v2-ggml-model-f16.gguf \
-   llama-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
+   rag-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
      --model-name Llama-2-7b-chat-hf-Q5_K_M,all-MiniLM-L6-v2-ggml-model-f16 \
      --ctx-size 4096,384 \
-     --qdrant-url http://127.0.0.1:6333 \
-     --qdrant-collection-name default \   
-     --qdrant-limit 3 \
-     --qdrant-score-threshold 0.5 \
+     --rag-prompt "Use the following context to answer the question.\n----------------\n" \
      --log-prompts --log-stat
 ```
 
+The CLI arguments are self-explanatory.
 
-The `--qdrant-*` arguments for WasmEdge are as follows.
+* The `--nn-proload` loads two models we just downloaded. The chat model is named `default` and the embedding model is named `embedding` .
+* The `llama-api-server.wasm` is the API server app. It is written in Rust using LlamaEdge SDK, and is already compiled to cross-platform Wasm binary.
+* The `--model-name` specifies the names of those two models so that API calls can to routed to specific models.
+* The `--ctx-size` specifies the max input size for each of those two models listed in `--model-name`.
+* The `--rag-prompt` specifies the system prompt that introduces the context if the vector search returns relevant context from qdrant.
 
-* The `--qdrant-url` is the API URL to the Qdrant server that contains the vector collection. 
-* The `--qdrant-collection-name` is the name of the vector collection that contains our knowledge base.
-* The `--qdrant-limit` is the max number of text chunks (search results) we could add to the prompt as the RAG context.
-* The `--qdrant-score-threshold` is minimum score a search result must reach for its corresponding text chunk to be added to the RAG context.
+There are a few optional `--qdrant-*` arguments you could use.
 
+* The `--qdrant-url` is the API URL to the Qdrant server that contains the vector collection. It defaults to `http://localhost:6333`.
+* The `--qdrant-collection-name` is the name of the vector collection that contains our knowledge base. It defaults to `default`.
+* The `--qdrant-limit` is the max number of text chunks (search results) we could add to the prompt as the RAG context. It defaults to `3`.
+* The `--qdrant-score-threshold` is minimum score a search result must reach for its corresponding text chunk to be added to the RAG context. It defaults to `0.4`.
 
 For example, if you ask the question “Where is Paris?”, the actual prompt to the LLM will contain 3 paragraphs of text that are relevant to the question. 
 
