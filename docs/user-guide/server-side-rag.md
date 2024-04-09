@@ -180,7 +180,7 @@ curl -X DELETE 'http://localhost:6333/collections/default'
 ```
 
 
-Create a new collection called `default`. Notice that it is 384 dimensions. That is the output vector size of the embedding model all-MiniLM-L6-v2. If you are using a different embedding model, you should use a dimension that fits the model. 
+Create a new collection called `default`. Notice that it is 384 dimensions. That is the output vector size of the embedding model `all-MiniLM-L6-v2`. If you are using a different embedding model, you should use a dimension that fits the model. 
 
 
 ```
@@ -203,7 +203,7 @@ curl -LO https://github.com/YuanTony/chemistry-assistant/raw/main/rag-embeddings
 
 It chunks the document based on empty lines. So, you MUST prepare your source document this way — to segment the document into sections of around 200 words with empty lines. See the example document here. You can check out the [Rust source code here](https://github.com/YuanTony/chemistry-assistant/tree/main/rag-embeddings) and modify it if you need to use a different chunking strategy. 
 
-Next, you can run the program by passing a collection name, vector dimension, and the source document. Make sure that Qdrant is running on your local machine. The model is preloaded under the name `embedding`. The wasm app then uses the `embedding` model to create the 384-dimension vectors from `[paris.txt](https://huggingface.co/datasets/gaianet/paris/raw/main/paris.txt)` and saves them into the `default` collection.
+Next, you can run the program by passing a collection name, vector dimension, and the source document. Make sure that Qdrant is running on your local machine. The model is preloaded under the name `embedding`. The wasm app then uses the `embedding` model to create the 384-dimension vectors from [paris.txt](https://huggingface.co/datasets/gaianet/paris/raw/main/paris.txt) and saves them into the `default` collection.
 
 ```
 curl -LO https://huggingface.co/datasets/gaianet/paris/raw/main/paris.txt
