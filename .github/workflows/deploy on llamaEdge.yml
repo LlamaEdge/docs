@@ -51,12 +51,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd www
-          echo ${{ secrets.GH_TOKEN }}
-          git status
-          git remote set-url --push origin https://JYC0413:${{ secrets.GH_TOKEN }}@github.com/LlamaEdge/www.git
-          git status
-          git config --local user.email "juyichen0413@foxmail.com"
-          git config --global user.name "JYC0413"
+          git remote set-url --push origin https://${{ secrets.GH_TOKEN }}@github.com/LlamaEdge/www.git
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add .
           git commit -m "Build and deploy docs"
           git push
