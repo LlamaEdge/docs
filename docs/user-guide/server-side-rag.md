@@ -17,7 +17,7 @@ The LlamaEdge API server is a powerful demo of the LlamaEdge development platfor
 Install the [WasmEdge Runtime](https://github.com/WasmEdge/WasmEdge), our cross-platform LLM runtime.
 
 ```
-curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- --plugins wasmedge_rustls wasi_nn-ggml
+curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- --plugins wasi_nn-ggml
 ```
 
 Download the pre-built binary for the LlamaEdge API server with RAG support.
