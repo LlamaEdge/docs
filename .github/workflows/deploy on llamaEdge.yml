@@ -51,8 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd www
-          echo $GITHUB_TOKEN
-          git remote set-url --push origin https://JYC0413:$GITHUB_TOKEN@github.com/LlamaEdge/www.git
+          git remote set-url --push origin https://github.com/LlamaEdge/www.git
           git config --local user.email "juyichen0413@foxmail.com"
           git config --global user.name "JYC0413"
           git add .
