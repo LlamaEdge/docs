@@ -92,6 +92,12 @@ There are a few optional `--qdrant-*` arguments you could use.
 
 ## Create knowledge embeddings
 
+Delete the `default` collection if it exists. 
+
+```
+curl -X DELETE 'http://localhost:6333/collections/default'
+```
+
 The LlamaEdge RAG API server provides an API endpoint `/create/rag` that takes a text file, segments it into small chunks, turns the chunks into embeddings (i.e., vectors), and then stores the embeddings into the Qdrant database.
 Here we submit a travel guide for Paris France.
 
