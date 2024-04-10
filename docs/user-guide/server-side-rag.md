@@ -23,7 +23,7 @@ curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/insta
 Download the pre-built binary for the LlamaEdge API server with RAG support.
 
 ```
-curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/rag-api-server.wasm
+curl -LO https://github.com/LlamaEdge/rag-api-server/releases/latest/download/rag-api-server.wasm
 ```
 
 And the chatbot web UI for the API server.
