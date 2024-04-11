@@ -48,7 +48,7 @@ jobs:
 
       - name: Commit changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd www
           git remote set-url --push origin https://JYC0413:$GITHUB_TOKEN@github.com/LlamaEdge/www.git
