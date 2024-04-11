@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Enhance your onboarding experience and quickly get started with LlamaEdge using the following scripts.
 
-#1: Quick start without any argument
+## Quick start without any argument
 
 ```
 bash <(curl -sSfL 'https://raw.githubusercontent.com/LlamaEdge/LlamaEdge/main/run-llm.sh')
@@ -15,7 +15,7 @@ bash <(curl -sSfL 'https://raw.githubusercontent.com/LlamaEdge/LlamaEdge/main/ru
 It will download and start the Gemma-2b model automatically. Open http://127.0.0.1:8080 in your browser and start chatting right away!
 
 
-#2: Specify a model using `--model model_name`
+## Specify a model
 
 ```
 bash <(curl -sSfL 'https://raw.githubusercontent.com/LlamaEdge/LlamaEdge/main/run-llm.sh') --model llama-2-7b-chat
@@ -28,7 +28,7 @@ To explore all the available models, please use the following command line
 ```
 bash <(curl -sSfL 'https://raw.githubusercontent.com/LlamaEdge/LlamaEdge/main/run-llm.sh') --model help
 ```
-#3:  Interactively choose and confirm all steps in the script using using `--interactive` flag
+## Interactively choose and confirm all steps
 
 ```
 bash <(curl -sSfL 'https://raw.githubusercontent.com/LlamaEdge/LlamaEdge/main/run-llm.sh') --interactive
