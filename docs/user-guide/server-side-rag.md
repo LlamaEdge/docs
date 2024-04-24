@@ -37,8 +37,8 @@ rm chatbot-ui.tar.gz
 Download a chat model and an embedding model.
 
 ```
-# The chat model is Llama2 7b chat
-curl -LO https://huggingface.co/second-state/Llama-2-7B-Chat-GGUF/resolve/main/Llama-2-7b-chat-hf-Q5_K_M.gguf
+# The chat model is Llama3 8b chat
+curl -LO https://huggingface.co/second-state/Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q5_K_M.gguf
 
 # The embedding model is all-MiniLM-L6-v2
 curl -LO https://huggingface.co/second-state/All-MiniLM-L6-v2-Embedding-GGUF/resolve/main/all-MiniLM-L6-v2-ggml-model-f16.gguf
@@ -66,10 +66,10 @@ Let’s start the LlamaEdge RAG API server on port 8080. By default, it connects
 
 ```
 wasmedge --dir .:. \
-   --nn-preload default:GGML:AUTO:Llama-2-7b-chat-hf-Q5_K_M.gguf \
+   --nn-preload default:GGML:AUTO:Meta-Llama-3-8B-Instruct-Q5_K_M.gguf \
    --nn-preload embedding:GGML:AUTO:all-MiniLM-L6-v2-ggml-model-f16.gguf \
    rag-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
-     --model-name Llama-2-7b-chat-hf-Q5_K_M,all-MiniLM-L6-v2-ggml-model-f16 \
+     --model-name Meta-Llama-3-8B-Instruct-Q5_K_M,all-MiniLM-L6-v2-ggml-model-f16 \
      --ctx-size 4096,384 \
      --rag-prompt "Use the following context to answer the question.\n----------------\n" \
      --log-prompts --log-stat
@@ -79,16 +79,16 @@ The CLI arguments are self-explanatory.
 
 * The `--nn-proload` loads two models we just downloaded. The chat model is named `default` and the embedding model is named `embedding` .
 * The `llama-api-server.wasm` is the API server app. It is written in Rust using LlamaEdge SDK, and is already compiled to cross-platform Wasm binary.
-* The `--model-name` specifies the names of those two models so that API calls can to routed to specific models.
+* The `--model-name` specifies the names of those two models so that API calls can be routed to specific models.
 * The `--ctx-size` specifies the max input size for each of those two models listed in `--model-name`.
-* The `--rag-prompt` specifies the system prompt that introduces the context if the vector search returns relevant context from qdrant.
+* The `--rag-prompt` specifies the system prompt that introduces the context of the vector search and returns relevant context from qdrant.
 
 There are a few optional `--qdrant-*` arguments you could use.
 
 * The `--qdrant-url` is the API URL to the Qdrant server that contains the vector collection. It defaults to `http://localhost:6333`.
 * The `--qdrant-collection-name` is the name of the vector collection that contains our knowledge base. It defaults to `default`.
-* The `--qdrant-limit` is the max number of text chunks (search results) we could add to the prompt as the RAG context. It defaults to `3`.
-* The `--qdrant-score-threshold` is minimum score a search result must reach for its corresponding text chunk to be added to the RAG context. It defaults to `0.4`.
+* The `--qdrant-limit` is the maximum number of text chunks (search results) we could add to the prompt as the RAG context. It defaults to `3`.
+* The `--qdrant-score-threshold` is the minimum score a search result must reach for its corresponding text chunk to be added to the RAG context. It defaults to `0.4`.
 
 ## Create knowledge embeddings
 
@@ -130,7 +130,7 @@ You are a helpful assistant.
 Use the following pieces of context to answer the user's question.
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
 ----------------
-"For centuries Paris has been one of the world’s most important and attractive cities. It is appreciated for the opportunities it offers for business and commerce, for study, for culture, and for entertainment; its gastronomy, haute couture, painting, literature, and intellectual community especially enjoy an enviable reputation. Its sobriquet “the City of Light” (“la Ville Lumière”), earned during the Enlightenment, remains appropriate, for Paris has retained its importance as a centre for education and intellectual pursuits."
+"For centuries Paris has been one of the world’s most important and attractive cities. It is appreciated for the opportunities it offers for business and commerce, for study, for culture, and for entertainment; its gastronomy, haute couture, painting, literature, and intellectual community especially enjoy an enviable reputation. Its sobriquet “the City of Light” (“la Ville Lumière”), earned during the Enlightenment, remains appropriate, for Paris has retained its importance as a center for education and intellectual pursuits."
 
 "Under Hugh Capet (ruled 987–996) and the Capetian dynasty the preeminence of Paris was firmly established, and Paris became the political and cultural hub as modern France took shape. France has long been a highly centralized country, and Paris has come to be identified with a powerful central state, drawing to itself much of the talent and vitality of the provinces."
 
@@ -166,7 +166,7 @@ curl -X POST http://localhost:8080/v1/chat/completions \
 
 ## Use your own embedding algos
 
-You could build your own embeddings database. By chunking the documents yourself, you will probably get better results. You can also then share the database snapshot with others. 
+You could build your own embedding database. By chunking the documents yourself, you will probably get better results. You can also then share the database snapshot with others. 
 
 Delete the `default` collection if it exists. 
 
@@ -229,6 +229,6 @@ Finally, start your LlamaEdge API server again. Go to http://localhost:8080/ aga
 
 Now it is time to build your own RAG-enabled API server! You can start by using the same embedding model but with a different document. Make sure that you segment the document into chucks of less than 200 words each, and separate each chunk with an empty line. You can experiment with different chucking strategies to evaluate how to come up with the best search results when the user asks new questions. 
 
-Next, you can experiment with a different embedding model. Notice that each embedding model has a different context length (ie max length for each chunk) and vector size. You must also use the same embedding model to generate embeddings and perform RAG search / chat. 
+Next, you can experiment with a different embedding model. Notice that each embedding model has a different context length (ie max length for each chunk) and vector size. You must also use the same embedding model to generate embeddings and perform RAG search/chat. 
 
 Good luck!
