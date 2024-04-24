@@ -6,7 +6,7 @@ sidebar_position: 3
 
 RAG is an important technique to inject new and updated knowledge into an LLM application. It improves accuracy and reduces the hallucination of LLMs, especially in specific domains covered by the RAG knowledge base. In the past, most RAG setups are very complex requiring the orchestration of multiple services and components in heavyweight frameworks in Python. 
 
-LlamaEdge, on the other hand, provides a Rust-based development platform that enables developers to combine RAG logic into the chat API server! The compact and efficient single-binary API server is cross-platform and runs on any GPU or AI accelerator device, which allows it to be easily deployed across the cloud and the edge. 
+[LlamaEdge](https://github.com/LlamaEdge/LlamaEdge), on the other hand, provides a Rust-based development platform that enables developers to combine RAG logic into the chat API server! The compact and efficient single-binary API server is cross-platform and runs on any GPU or AI accelerator device, which allows it to be easily deployed across the cloud and the edge. 
 
 >Since the LlamaEdge API server encapsulates the RAG logic behind the OpenAI-compatible web service API, you can use any OpenAI-compatible frontend to interact with it. When you ask a question through the API, the answer is already RAG-enhanced. No client-side RAG (i.e., to index and search the RAG vector store in the client) is needed.
 
