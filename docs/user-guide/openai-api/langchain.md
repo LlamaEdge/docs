@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Client-side RAG with LlamaEdge
+# LangChain
 
 In this tutorial, I will introduce you how to build a client-side RAG using Llama2-7b-chat model, based on LlamaEdge and Langchain.
 

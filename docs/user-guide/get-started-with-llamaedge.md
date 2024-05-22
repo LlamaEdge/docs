@@ -2,8 +2,7 @@
 sidebar_position: 2
 ---
 
-# Getting started with LlamaEdge
-
+# LlamaEdge step-by-step
 
 Let's dive into a simple and practical tutorial on getting started with LlamaEdge, focusing on how to use a Command Line Interface (CLI) installer to run a model, along with some useful WasmEdge commands. This guide can be adjusted and applied to run Llama 2 series of models, tailored to give you a hands-on approach to running your large language model with LlamaEdge.
 
@@ -47,7 +46,7 @@ curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llam
 This downloads a portable Wasm file that lets you chat with the Llama 2 model directly from the command line.
 
 
-### Step 4: Running the Model
+### Step 4: Chat with the Model
 
 With everything set up, it's time to run the model:
 
@@ -60,7 +59,7 @@ wasmedge --dir .:. --nn-preload default:GGML:AUTO:llama-2-13b-chat.Q5_K_M.gguf l
 This command executes the chat application, allowing you to start interacting with the Llama 2 13b model. Here, `wasmedge` is the command to run the WasmEdge runtime, `--nn-preload` specifies the model to use with the WASI-NN plugin, and `-p` sets the prompt template for the chat.
 
 
-### Optional: Creating an OpenAI-Compatible API Service
+### Step 5: Create an OpenAI-compatible API Service
 
 If you're interested in creating a web API service that's compatible with OpenAI, download the API server application:
 
