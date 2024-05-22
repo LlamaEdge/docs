@@ -62,7 +62,7 @@ nohup docker run -d -p 6333:6333 -p 6334:6334 \
 
 ## Start the API server
 
-Let’s start the LlamaEdge RAG API server on port 8080. By default, it connects to the local Qdrant server.
+Let's start the LlamaEdge RAG API server on port 8080. By default, it connects to the local Qdrant server.
 
 ```
 wasmedge --dir .:. \
@@ -115,13 +115,13 @@ curl 'http://localhost:6333/collections/default'
 
 Of course, the `/create/rag` API is rather primitive in chunking documents and creating embeddings. For many use cases, you should [create your own embedding vectors](#use-your-own-embedding-algos).
 
-> The `/create/rag` is a simple combination of [several more basic API endpoints](../developer-guide/create-embeddings-collection.md) provided by the API server. You can learn more about them in the developer guide.
+> The `/create/rag` is a simple combination of [several more basic API endpoints](../../developer-guide/create-embeddings-collection) provided by the API server. You can learn more about them in the developer guide.
 
 ## Chat with supplemental RAG knowledge
 
 The LlamaEdge RAG API server takes every new user request, searches relevant embeddings based on the request, and then adds search results to the prompt.
 
-For example, if you ask the question “Where is Paris?”, the actual prompt to the LLM will contain 3 paragraphs of text that are relevant to the question. 
+For example, if you ask the question "Where is Paris?", the actual prompt to the LLM will contain 3 paragraphs of text that are relevant to the question. 
 
 
 ```
