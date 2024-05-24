@@ -11,9 +11,9 @@ The LobeChat framework supports OpenAI providers, and since LlamaEdge is compati
 
 ## Prerequisites
 
-Before proceeding, follow the [Getting started with LlamaEdge guide](get-started-with-llamaedge.md) to run an open-source LLM locally.
+Before proceeding, follow the [Getting Started with LlamaEdge guide](get-started-with-llamaedge.md) to run an open-source LLM locally.
 
-## Steps to integrate Dify and LlamaEdge
+## Steps to integrate LobeChat and LlamaEdge
 
 Open the [LobeChat Language Model setting page](https://chat-preview.lobehub.com/settings/modal?agent=&session=inbox&tab=llm&topic=CIfo1UYZ) and choose the first one OpenAI.
 
@@ -23,7 +23,7 @@ Then, enable the Client-Side Fetching Mode.
 
 Next, Click on the Get Model List button to automatically detect the model you're using. Select that model from the list.
 
-Finnaly, you can click on the Check button to check the connect status.
+Finally, you can click on the Check button to check the connect status.
 
 ![](lobechat-llamaedge-01.png)
 
