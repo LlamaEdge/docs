@@ -36,25 +36,20 @@ wasmedge --dir .:. \
     --nn-preload default:GGML:AUTO:Meta-Llama-3-8B-Instruct-Q5_K_M.gguf \
     --nn-preload embedding:GGML:AUTO:all-MiniLM-L6-v2-ggml-model-f16.gguf \
     llama-api-server.wasm \
-    --model-alias default \
-    --model-name llama-3-8b-chat \
-    --prompt-template llama-3-chat \
-    --ctx-size 8192 \
-    --embedding-model-alias embedding \
-    --embedding-model-name all-minilm-l6-v2 \
-    --embedding-ctx-size 256
+    --model-alias default,embedding \
+    --model-name llama-3-8b-chat,all-minilm-l6-v2 \
+    --prompt-template llama-3-chat,embedding \
+    --ctx-size 8192,256
 ```
 
 You can learn more about these CLI options [here](https://github.com/LlamaEdge/LlamaEdge/tree/main/api-server).
 
-* Options for the chat LLM model (i.e., the `Meta-Llama-3-8B-Instruct-Q5_K_M.gguf`)
-    * The `--model-alias` matches the chat LLM model in `--nn-preload`, which is `default` in this case.
-    * The `--model-name` can be any string, and you will need it in API calls when the client wants to select a model to chat.
-    * The `--prompt-template` and `--ctx-size` are settings for the chat LLM model.
-* Options for the embedding model (i.e., the `all-MiniLM-L6-v2-ggml-model-f16.gguf`)
-    * The `--embedding-model-alias` matches the chat LLM model in `--nn-preload`, which is `embedding` in this case.
-    * The `--embedding-model-name` can be any string, and you will need it in API calls.
-    * The `--embedding-ctx-size` is the max context size for the input to the embedding model.
+* The `--model-alias` specifies which of the preloaded models is for chat and embedding respectively. In this case
+  * The alias `default` corresponds to `Meta-Llama-3-8B-Instruct-Q5_K_M.gguf`
+  * The alias `embedding` corresponds to `all-MiniLM-L6-v2-ggml-model-f16.gguf`
+* The `--model-name` can be any string, and you will need it in API calls when the client wants to select a model to interact with. The two values correspond to the `default` and `embedding` model respectively.
+* The `--prompt-template` specifies the prompt template name for the chat model, and it uses `embedding` for the prompt template name for the embedding model.
+* The `--ctx-size` specifies the context window size for the `default` and `embedding` model respectively.
 
 That's it. You can now test the API server by sending it a request.
 Notice that model name `llama-3-8b-chat` matches what you specified in the `llama-api-server.wasm` command.
@@ -73,8 +68,8 @@ In general, for any OpenAI tool, you could just replace the following.
 |Config option | Value | Note |
 |-----|--------|-------|
 | API endpoint URL | `http://localhost:8080/v1` | If the server is accessible from the web, you could use the public IP and port |
-| Model Name (for LLM) | `llama-3-8b-chat` | The value specified in the `--model-name` option |
-| Model Name (for Text embedding) | `all-minilm-l6-v2` | The value specified in the `--embedding-model-name` option |
+| Model Name (for LLM) | `llama-3-8b-chat` | The first value specified in the `--model-name` option |
+| Model Name (for Text embedding) | `all-minilm-l6-v2` | The second value specified in the `--model-name` option |
 | API key | Empty | Or any value if the app does not permit empty string |
 
 
