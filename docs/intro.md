@@ -12,3 +12,4 @@ LlamaEdge is the easiest & fastest way to run customized and fine-tuned LLMs loc
 * Supports many optimized inference libraries
 * Wide selection of AI / LLM models
 
+Click on the links to learn why use LlamaEdge instead of [Python / Pytorch](llamaedge_vs_python), [llama.cpp](llamaedge_vs_llamacpp), and [standalone API servers](llamaedge_vs_ollama) such as Ollama.

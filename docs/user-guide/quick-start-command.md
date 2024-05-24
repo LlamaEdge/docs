@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Quickstart with one line of command
+# Quick start
 
 Enhance your onboarding experience and quickly get started with LlamaEdge using the following scripts.
 
