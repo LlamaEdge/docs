@@ -1,17 +1,19 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
-# LobeChat + LlamaEdge
+# LobeChat
 
-The LobeChat framework supports OpenAI providers, and since LlamaEdge is compatible with the OpenAI API, you can use LlamaEdge as the backend Large Language Model (LLM) API. This integration supports:
+The [LobeChat](https://github.com/lobehub/lobe-chat) framework is a modern chatbot framework that supports a wide range of 
+AI models and custom plugins.
+You can use configure it to use LlamaEdge as the backend Large Language Model (LLM) replacing OpenAI. This integration supports:
 
 * The hosted LobeChat service
 * Any product built on the open-source LobeChat framework
 
 ## Prerequisites
 
-Before proceeding, follow the [Getting Started with LlamaEdge guide](get-started-with-llamaedge.md) to run an open-source LLM locally.
+Follow [this guide](intro) to run an open-source LLM locally.
 
 ## Steps to integrate LobeChat and LlamaEdge
 
@@ -26,7 +28,6 @@ Next, Click on the Get Model List button to automatically detect the model you'r
 Finally, you can click on the Check button to check the connect status.
 
 ![](lobechat-llamaedge-01.png)
-
 
 After that, go back to [the chat page](https://chat-preview.lobehub.com/chat?session=inbox&agent=) and choose the model you just chose in the previous step. Now you can chat with the model via LobeChat.
 
