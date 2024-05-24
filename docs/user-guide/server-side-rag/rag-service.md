@@ -9,7 +9,7 @@ It provides an easy way to quick generate embeddings from a body text into a Qdr
 
 ## Prerequisites
 
-You will need to follow [this guide](intro) to start a Qdrant database instance and a local `llama-api-server.wasm` server.
+You will need to follow [this guide](quick-start) to start a Qdrant database instance and a local `llama-api-server.wasm` server.
 
 Delete the `default` collection if it exists. 
 
