@@ -10,6 +10,7 @@ choose LlamaEdge over them?
 * LlamaEdge is very small. The entire runtime and application is only 30MB. That is about 1/3 of the nearest competitor.
 * LlamaEdge does not need root or sudo permissions It does not install or run any daemon on your system. Hence LlamaEdge can be easily embedded into your own app.
 * LlamaEdge works with model files you download from Huggingface. There is no need for a special download hub.
+* LlamaEdge supports alternative runtimes beyond llama.cpp to achieve the most optimal performance for your model and hardware.
 * LlamaEdge provides a fully featured API server that supports both chat and embedding models in OpenAI-compatible API formats.
 * LlamaEdge already supports for multimodal vision models. It will soon support text-to-image, and voice models soon through a unified OpenAI-compatible API.
 
