@@ -46,7 +46,7 @@ With everything set up, it's time to run the chat app with the LLM model as foll
 wasmedge --dir .:. --nn-preload default:GGML:AUTO:Meta-Llama-3-8B-Instruct-Q5_K_M.gguf llama-chat.wasm -p llama-3-chat
 ```
 
-This command executes the chat application, allowing you to start interacting with the Llama 2 13b model. Here, `wasmedge` is the command to run the WasmEdge runtime, `--nn-preload` specifies the model to use with the WASI-NN plugin, and `-p` sets the prompt template for the chat.
+This command executes the chat application, allowing you to start interacting with the Llama 3 8B model. Here, `wasmedge` is the command to run the WasmEdge runtime, `--nn-preload` specifies the model to use with the WASI-NN plugin, and `-p` sets the prompt template for the chat.
 
 ### Step 5: Chat with the chatbot UI 
 
