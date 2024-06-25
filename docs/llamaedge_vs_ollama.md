@@ -13,6 +13,7 @@ choose LlamaEdge over them?
 * Through Docker integration, an LlamaEdge container combines model files, configurations, and runtime into a single package ensuring compatibility and portability over time. All from the Docker Hub you already use.
 * LlamaEdge supports alternative runtimes beyond llama.cpp to achieve the most optimal performance for your model and hardware.
 * LlamaEdge already supports multimodal vision models. It will soon support speech-to-text and text-to-image models through as OpenAI-compatible APIs.
+* LlamaEdge is more secure. **LlamaEdge server is a sandboxed Wasm** and does not require root privileges. So it is much harder to exploit.
 
 Finally, LlamaEdge is a developer platform. It provides Rust APIs and components for you to build your own applications.
 It enables developers to create a single compact and cross-platform binary app that can be easily deployed and orchestrated across clouds.
