@@ -45,7 +45,7 @@ We will now start the API server with both models. The LLM is named `default` an
 wasmedge --dir .:. \
    --nn-preload default:GGML:AUTO:Llama-2-7b-chat-hf-Q5_K_M.gguf \
    --nn-preload embedding:GGML:AUTO:all-MiniLM-L6-v2-ggml-model-f16.gguf \
-   llama-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
+   llama-api-server.wasm -p llama-2-chat,embedding --web-ui ./chatbot-ui \
      --model-name Llama-2-7b-chat-hf-Q5_K_M,all-MiniLM-L6-v2-ggml-model-f16 \
      --ctx-size 4096,384 \
      --log-prompts --log-stat
