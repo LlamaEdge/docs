@@ -91,7 +91,7 @@ Let's start the LlamaEdge RAG API server on port 8080. By default, it connects t
 wasmedge --dir .:. \
    --nn-preload default:GGML:AUTO:Meta-Llama-3-8B-Instruct-Q5_K_M.gguf \
    --nn-preload embedding:GGML:AUTO:all-MiniLM-L6-v2-ggml-model-f16.gguf \
-   rag-api-server.wasm -p llama-2-chat --web-ui ./chatbot-ui \
+   rag-api-server.wasm -p llama-3-chat,embedding --web-ui ./chatbot-ui \
      --model-name Meta-Llama-3-8B-Instruct-Q5_K_M,all-MiniLM-L6-v2-ggml-model-f16 \
      --ctx-size 4096,384 \
      --rag-prompt "Use the following context to answer the question.\n----------------\n" \
