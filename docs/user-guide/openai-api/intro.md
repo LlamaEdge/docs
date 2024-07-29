@@ -18,7 +18,7 @@ curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/insta
 ## Step 2: Download an LLM model
 
 ```
-curl -LO https://huggingface.co/second-state/Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q5_K_M.gguf
+curl -LO https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
 ```
 
 ## Step 3: Download an embedding model
@@ -33,7 +33,7 @@ It is used by many agent and RAG apps to convert text-based knowledge into vecto
 
 ```
 wasmedge --dir .:. \
-    --nn-preload default:GGML:AUTO:Meta-Llama-3-8B-Instruct-Q5_K_M.gguf \
+    --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf \
     --nn-preload embedding:GGML:AUTO:nomic-embed-text-v1.5.f16.gguf \
     llama-api-server.wasm \
     --model-alias default,embedding \
@@ -46,7 +46,7 @@ wasmedge --dir .:. \
 You can learn more about these CLI options [here](https://github.com/LlamaEdge/LlamaEdge/tree/main/api-server).
 
 * The `--model-alias` specifies which of the preloaded models is for chat and embedding respectively. In this case
-  * The alias `default` corresponds to `Meta-Llama-3-8B-Instruct-Q5_K_M.gguf`
+  * The alias `default` corresponds to `Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf`
   * The alias `embedding` corresponds to `nomic-embed-text-v1.5.f16.gguf`
 * The `--model-name` can be any string, and you will need it in API calls when the client wants to select a model to interact with. The two values correspond to the `default` and `embedding` model respectively.
 * The `--prompt-template` specifies the prompt template name for the chat model, and it uses `embedding` for the prompt template name for the embedding model.

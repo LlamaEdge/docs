@@ -14,7 +14,7 @@ those IDEs. You can easily configure it to use a local LlamaEdge LLM as backends
 
 ## Prerequisites
 
-Follow [this guide](intro) to run an open-source LLM locally.
+Follow [this guide](intro.md) to run an open-source LLM locally.
 Since we have a coding application here, you should download a coding LLM like the Codestral.
 
 ```

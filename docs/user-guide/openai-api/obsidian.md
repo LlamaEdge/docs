@@ -8,13 +8,13 @@ Obsidian is a note-taking application that enables users to create, link, and vi
 
 **Obsidian-local-gpt is a plugin that** allows users to run a local large language model within Obsidian note-taking application. This plugin enables various AI-powered features directly in Obsidian, such as text generation, summarization, spelling and grammar checks, and task extraction. 
 
-A key feature of this plugin is that it supports a large number of open source LLMs. You can choose an LLM that is finetuned for your specific task — eg if you take a lot of coding notes, you could choose a Codestral or CodeLlama or DeepSeek LLM. Furthermore, if you choose to run the LLM locally on your own computer, the plugin would support private and offline use of the LLM features. For more details, you can visit the [obsidian-local-gpt GitHub page](https://github.com/pfrankov/obsidian-local-gpt).
+A key feature of this plugin is that it supports a large number of open source LLMs. You can choose an LLM that is finetuned for your specific task -- eg if you take a lot of coding notes, you could choose a Codestral or CodeLlama or DeepSeek LLM. Furthermore, if you choose to run the LLM locally on your own computer, the plugin would support private and offline use of the LLM features. For more details, you can visit the [obsidian-local-gpt GitHub page](https://github.com/pfrankov/obsidian-local-gpt).
 
 This guide explains how to set up and use the plugin with a lightweight LlamaEdge LLM as an alternative to OpenAI or Ollama.
 
 ## Prerequisites
 
-Follow [this guide](intro) to run an open-source LLM locally.
+Follow [this guide](intro.md) to run an open-source LLM locally.
 
 ## Obsidian-local-gpt Plugin Setup
 
@@ -24,11 +24,11 @@ Make sure you have already installed the Obsidian app on your device.
 ### Install the Obsidian-local-gpt Plugin
 
 * Open Obsidian settings, navigate to "Community plugins", and search for `obsidian-local-gpt`.
-* Install the plugin by clicking “Install”.
+* Install the plugin by clicking on "Install".
 
 ![](obsidian-enable.png)
 
-Then click “Enable”.
+Then click on "Enable".
 
 
 ### **Configure the Plugin**

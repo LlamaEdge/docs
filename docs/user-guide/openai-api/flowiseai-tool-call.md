@@ -9,7 +9,7 @@ You can configure the FlowiseAI tool to use a local LlamaEdge LLM that supports 
 
 ## Prerequisites
 
-Follow [this guide](intro) to run an open-source LLM locally.
+Follow [this guide](intro.md) to run an open-source LLM locally.
 In this example, we need an open source LLM that is capable of generating tool call (JSON) responses.
 The Mistral v0.3 7B model is a good choice here.
 
