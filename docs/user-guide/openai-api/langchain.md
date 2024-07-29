@@ -10,7 +10,7 @@ In this tutorial, I will introduce you how to build a client-side RAG using Llam
 
 ### Build the client app using Langchian with vector DB support
 
-First, let’s build a chatbot web app using Langchain. This part will be built in Python. The app includes uploading file and attaches the Chroma DB and the gpt4all embedding algorithms.
+First, let's build a chatbot web app using Langchain. This part will be built in Python. The app includes uploading file and attaches the Chroma DB and the gpt4all embedding algorithms.
 
 To quick start, fork or clone [the wasm-llm repo](https://github.com/second-state/wasm-llm) and open the wasm-bot folder.
 
