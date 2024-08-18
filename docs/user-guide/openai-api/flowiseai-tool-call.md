@@ -31,6 +31,8 @@ wasmedge --dir .:. \
     --ctx-size 32768,8192
 ```
 
+> You can [start a Gaia node](https://github.com/GaiaNet-AI/node-configs/tree/main/mistral-0.3-7b-instruct-tool-call) for the `Mistral-7B-Instruct-v0.3.Q5_K_M` model with tool call support. You can then use the node's API URL endpoint and model name in your tool call apps.
+
 ## Start a FlowiseAI server
 
 Follow [the FlowiseAI guide](https://docs.flowiseai.com/getting-started) to install Flowise locally

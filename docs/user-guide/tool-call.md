@@ -38,6 +38,8 @@ wasmedge --dir .:. \
 
 Note the `groq-llama3-tool` prompt template. It constructs user queries and LLM responses, including JSON messages for tool calls, into proper formats that the model is finetuned to follow. 
 
+> You can [start a Gaia node](https://github.com/GaiaNet-AI/node-configs/tree/main/llama-3-groq-8b-tool) for the Llama-3-Groq model. You can then use the node's API URL endpoint and model name in your tool call apps.
+
 ## Run the demo agent
 
 The [agent app](https://github.com/second-state/llm_todo) is written in Python. It demonstrates how the LLM could use tools to operate a SQL database. In this case, it starts and operates an in-memory SQLite database. The database stores a list of todo items. 
