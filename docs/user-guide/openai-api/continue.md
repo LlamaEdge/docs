@@ -14,7 +14,7 @@ those IDEs. You can easily configure it to use a local LlamaEdge LLM as backends
 
 ## Prerequisites
 
-Follow [this guide](intro.md) to run an open-source LLM locally.
+Follow [this guide](./intro.md)) to run an open-source LLM locally.
 Since we have a coding application here, you should download a coding LLM like the Codestral.
 
 ```
@@ -30,7 +30,7 @@ wasmedge --dir .:. \
     llama-api-server.wasm \
     --model-alias default,embedding \
     --model-name Codestral-22B-v0.1-hf-Q5_K_M,nomic-embed-text-v1.5.f16 \
-    --prompt-template llama-3-chat,embedding \
+    --prompt-template mistral-instruct,embedding \
     --batch-size 128,8192 \
     --ctx-size 32768,8192
 ```
