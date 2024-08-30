@@ -9,7 +9,7 @@ It is designed to be dynamic, organically growing, and learning as users use it.
 
 ## Prerequisites
 
-Follow [this guide](https://llamaedge.com/docs/user-guide/openai-api/intro/) to run an open-source LLM locally. In this example, we will use [Llama-3.1-8B](https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF) as the chat model and nomic-text-embed as the embedding model. 
+Follow [this guide](./docs/user-guide/openai-api/intro.md) to run an open-source LLM locally. In this example, we will use [Llama-3.1-8B](https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF) as the chat model and nomic-text-embed as the embedding model. 
 
 ```
 curl -LO https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
