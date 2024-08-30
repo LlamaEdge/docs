@@ -14,7 +14,7 @@ This guide explains how to set up and use the plugin with a lightweight LlamaEdg
 
 ## Prerequisites
 
-Follow [this guide](intro.md) to run an open-source LLM locally.
+Follow [this guide](./intro.md) to run an open-source LLM locally.
 
 ## Obsidian-local-gpt Plugin Setup
 

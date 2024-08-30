@@ -12,7 +12,7 @@ This LLM Translation Agent originally built by [Prof. Andrew Ng](https://www.lin
 
 ## Prerequisites
 
-Follow [this guide](intro.md) to run an open-source LLM locally.
+Follow [this guide](./intro.md) to run an open-source LLM locally.
 In this example, we need an open source LLM that is good at multiple languages.
 The Gemma-2 7B model from Google is a good choice here.
 

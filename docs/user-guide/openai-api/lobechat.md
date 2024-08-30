@@ -13,7 +13,7 @@ You can use configure it to use LlamaEdge as the backend Large Language Model (L
 
 ## Prerequisites
 
-Follow [this guide](intro.md) to run an open-source LLM locally.
+Follow [this guide](./intro.md) to run an open-source LLM locally.
 
 ## Steps to integrate LobeChat and LlamaEdge
 
