@@ -28,7 +28,7 @@ This command downloads the Llama-3-8B-Instruct model from Huggingface, an AI mod
 
 ### Step 3: Download a portable chatbot app
 
-Next, you need an application that can load the model and provide an UI to interact with the model.
+Next, you need an application that can load the model and provide a UI to interact with the model.
 The [LlamaEdge CLI chat app](https://github.com/LlamaEdge/LlamaEdge/tree/main/chat) is a lightweight and cross-platform Wasm app that works on any device
 you might have. Just download the compiled binary app.
 
@@ -50,7 +50,7 @@ This command executes the chat application, allowing you to start interacting wi
 
 ### Step 5: Chat with the chatbot UI 
 
-The command line UI is nice, but most people would perfer a web UI. The web UI also allows you to make your
+The command line UI is nice, but most people would prefer a web UI. The web UI also allows you to make your
 local LLM accessible to other people across the network.
 To do that, you need the [LlamaEdge API server](https://github.com/LlamaEdge/LlamaEdge/tree/main/api-server) app.
 
@@ -58,7 +58,7 @@ To do that, you need the [LlamaEdge API server](https://github.com/LlamaEdge/Lla
 curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llama-api-server.wasm
 ```
 
-The `llama-api-server.wasm` is a web server with an OpenAI compaitble API. You still need HTML files for the chatbot UI.
+The `llama-api-server.wasm` is a web server with an OpenAI compatible API. You still need HTML files for the chatbot UI.
 Download and unzip the HTML UI files as follows.
 
 ```
@@ -74,4 +74,6 @@ wasmedge --dir .:. --nn-preload default:GGML:AUTO:Meta-Llama-3-8B-Instruct-Q5_K_
 ```
 
 Go to `http://localhost:8080` on your computer to access the chatbot UI on a web page!
+
+Congratulations! You have now started an LLM app on your own device. But if you are interested in running an agentic app beyond the simple chatbot, you will need to start an API server for this LLM along with the embedding model. Check out [this guide on how to do it](./openai-api/intro.md)!
 
