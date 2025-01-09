@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# LlamaEdge step-by-step
+# Quick Stater with LlamaEdge 
 
 Let's dive into a simple and practical tutorial on getting started with LlamaEdge, focusing on how to use a Command Line Interface (CLI) installer to run a model, along with some useful WasmEdge commands. This guide can be adjusted and applied to run Llama 2 series of models, tailored to give you a hands-on approach to running your large language model with LlamaEdge.
 
