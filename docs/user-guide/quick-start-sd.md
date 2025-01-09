@@ -94,4 +94,4 @@ Response example:
 {"created":1736419627,"data":[{"url":"http://localhost:8080/v1/files/download/file_6420f32d-0b9a-4554-8e0b-a8deac0ab023","prompt":"A cute baby cat"}]}
 ```
 
-You can view the generated image according to the prompt.
+You can view the generated image by opening `http://localhost:8080/v1/files/download/file_6420f32d-0b9a-4554-8e0b-a8deac0ab02` in your browser.
