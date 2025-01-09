@@ -91,15 +91,7 @@ curl -X POST 'http://localhost:8080/v1/images/generations' \
 Response example:
 
 ```
-{
-  "created": 1723431133,
-  "data": [
-      {
-          "url": "/archives/file_74f514a2-8d33-4f9d-bcc0-42e8db14ecbc/output.png",
-          "prompt": "A cute cat"
-      }
-  ]
-}
+{"created":1736419627,"data":[{"url":"http://localhost:8080/v1/files/download/file_6420f32d-0b9a-4554-8e0b-a8deac0ab023","prompt":"A cute baby cat"}]}
 ```
 
-That's it. 
+You can view the generated image according to the prompt.
