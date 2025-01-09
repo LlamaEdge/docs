@@ -4,49 +4,45 @@ sidebar_position: 1
 
 # Quick Start
 
-LlamaEdge is a suite of component libraries and command line tools for developers to embed and run LLMs in their own apps. The best way to quickly experience LlamaEdge is to use easy-to-use utilities built on top of it.
+LlamaEdge is a suite of component libraries and command-line tools for developers to embed and run LLMs in their own apps. 
 
-## Quick Start with Gaia
+## Quick Start
 
-Gaia is an integrated tool for running open-source LLMs. It is built on LlamaEdge. Following these simple commands, you will be able to get an Internet-accessible chatbot and an OpenAI-compatible API server running on your devices using any open-source model you choose in a few minutes.
+### Install the WasmEdge Runtime
 
-Install the Gaia software with a single command on Mac, Linux, or Windows WSL.
-
-```bash
-curl -sSfL 'https://github.com/GaiaNet-AI/gaianet-node/releases/latest/download/install.sh' | bash
-```
-
-Then, follow the prompt on your screen to set up the environment path. The command line will begin with `source`.
-
-Use `gaianet init` to download the model files and vector database files specified in the `$HOME/gaianet/config.json` file, and it could take a few minutes since the files are large.
-
-```bash
-gaianet init
-```
-
-> The default `$HOME/gaianet/config.json` runs a Phi 3.5 LLM and a nomic-embed embedding model. You can easily [switch to a Llama 3.1 8b LLM by giving a different configuration](https://github.com/GaiaNet-AI/node-configs/tree/main/llama-3.1-8b-instruct) to `gaianet init`. Configurations for many more LLMs are [available here](https://github.com/GaiaNet-AI/node-configs).
-
-Start running the Gaia node.
-
-```bash
-gaianet start
-```
-
-Once it starts on your machine, you can simply go to `http://localhost:8080`. You can open a browser to that URL to see the node information and then chat with the LLM. This node API server also supports `v1/chat/completions` and `v1/embeddings` endpoints, fully compatible with OpenAI APIs.
-
-If you are running it on a server or need to access the LLM sevices from the Internet, the Gaia node has automatically set up connection tunneling for you. The script prints the Internet address for the LLM service on the console as follows.
+You can install WasmEdge and its WASI-NN plugin, which is essential for running LLM models, with the following command line.
 
 ```
-... ... https://0xf63939431ee11267f4855a166e11cc44d24960c0.us.gaianet.network
+curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install_v2.sh | bash -s
 ```
 
-To stop running the LLM services, you can run the following script.
+### Download the LLM model
 
-```bash
-gaianet stop
+Next, you'll need to obtain a model file. For this quick start guide, we will use the Llama-3.2-3B model, which is small with high-quality.
+
+```
+curl -LO https://huggingface.co/second-state/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct-Q5_K_M.gguf
 ```
 
-If you're looking to configure LLMs further, explore the details [here](https://docs.gaianet.ai/category/node-operator-guide).
+### Download the portable chatbot app
+
+Next, you need an application that can load the model and provide a UI to interact with the model.
+
+```
+curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llama-chat.wasm
+```
+
+### Chat with the model
+
+With everything set up, it's time to run the chat app with the Llama-3.3-3B model as follows.
+
+```
+wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-3B-Instruct-Q5_K_M.gguf llama-chat.wasm -p llama-3-chat
+```
+
+Then, you can chat with the model via the command UI.
+
+> To build an OpenAI-compatible API server for the LLM model, check the [LlamaEdge step-by-step](get-started-with-llamaedge.md) guide.
 
 ## Quick start with Moxin
 
