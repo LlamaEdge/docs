@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
 # Quick Start with Stable Diffusion models
@@ -52,13 +52,13 @@ tar -xzf WasmEdge-plugin-wasmedge_stablediffusion-cuda-11.3-0.14.1-ubuntu20.04_x
 
 ### Download the portable API server app
 
-Download the server Wasm application. It's lightweight (the size of the server is 2.5 MB) and cross-platform.
+Download the API server application. It's a Wasm file, which is lightweight (the size of the server is 2.5 MB) and cross-platform.
 
 ```
 curl -LO https://github.com/LlamaEdge/sd-api-server/releases/latest/download/sd-api-server.wasm
 ```
 
-### Download the stable diffusion model
+### Download the Stable Diffusion model
 
 
 ```
@@ -68,7 +68,7 @@ For more stable diffusion models, go to our [Stable Diffusion Models Collection]
 
 ### Start the API server
 
-Start the whisper API server with the following command line.
+Start the Stable Diffusion API server with the following command line.
 
 ```
 wasmedge --dir .:. sd-api-server.wasm --model-name sd-v2.1 --model v2-1_768-nonema-pruned-f16.gguf

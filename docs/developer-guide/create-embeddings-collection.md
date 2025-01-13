@@ -16,13 +16,13 @@ Check out the source code and build it using Rust `cargo` tools.
 git clone https://github.com/LlamaEdge/LlamaEdge
 
 cd LlamaEdge/api-server
-cargo build --target wasm32-wasi --release
+cargo build --target wasm32-wasip1 --release
 ```
 
 The `llama-api-server.wasm` file is in the `target` directory.
 
 ```
-cp target/wasm32-wasi/release/llama-api-server.wasm . 
+cp target/wasm32-wasip1/release/llama-api-server.wasm . 
 ```
 
 ## Download models

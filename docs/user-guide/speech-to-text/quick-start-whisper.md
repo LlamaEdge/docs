@@ -1,13 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Quick Start with Whisper
 
 
-[Whisper](https://github.com/openai/whisper)     
-
-With the [LlamaEdge whisper API server](https://github.com/LlamaEdge/whisper-api-server), you can build an OpenAI-compatible API server for the whisper model.
+[Whisper](https://github.com/openai/whisper) is OpenAI's general-purpose speech recognition model that accurately converts speech to text. This guide shows you how to set up and run Whisper using the [LlamaEdge whisper API server](https://github.com/LlamaEdge/whisper-api-server) server, which provides an OpenAI-compatible API interface.
 
 ### Install WasmEdge
 
@@ -37,7 +35,7 @@ curl -LO https://github.com/WasmEdge/WasmEdge/releases/download/0.14.1/WasmEdge-
 # Unzip the plugin to $HOME/.wasmedge/plugin
 tar -xzf WasmEdge-plugin-wasi_nn-whisper-cuda-12.0-0.14.1-ubuntu20.04_x86_64.tar.gz -C $HOME/.wasmedge/plugin
 ```
-**For CUDA 11.0 (Ubuntu) **
+**For CUDA 11.0 (Ubuntu)**
 
 ```
 # Download the stable diffusion plugin for cuda 11.0
@@ -46,12 +44,12 @@ curl -LO https://github.com/WasmEdge/WasmEdge/releases/download/0.14.1/WasmEdge-
 # Unzip the plugin to $HOME/.wasmedge/plugin
 tar -xzf WasmEdge-plugin-wasi_nn-whisper-cuda-11.3-0.14.1-ubuntu20.04_x86_64.tar.gz -C $HOME/.wasmedge/plugin
 ```
-For other release assets, please check out [the plugin release assets page](https://github.com/WasmEdge/WasmEdge/releases/tag/0.14.1).
+For release assets for other platform, please check out [the plugin release assets page](https://github.com/WasmEdge/WasmEdge/releases/tag/0.14.1).
 
 
 ### Download the portable API server app
 
-Download the server Wasm application. It's lightweight (the size of the server is 3.7 MB) and cross-platform.
+Download the API server application. It's a Wasm file, which is lightweight (the size of the server is 3.7 MB) and cross-platform.
 
 ```
 curl -LO https://github.com/LlamaEdge/whisper-api-server/releases/download/0.3.9/whisper-api-server.wasm
