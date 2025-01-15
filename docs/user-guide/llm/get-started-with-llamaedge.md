@@ -20,13 +20,13 @@ This command fetches and runs the WasmEdge installation script, which automatica
 
 ### Step 2: Download the LLM model
 
-Next, you'll need to obtain a model file. For this tutorial, we're focusing on the **Llama 3.1 8B model finetuned for instruction following**, but the steps are generally applicable to other models too. Use the following command to download the model file.
+Next, you'll need to obtain a model file. For this tutorial, we're focusing on the **Llama 3.2 1B model finetuned for instruction following**, but the steps are generally applicable to other models too. Use the following command to download the model file.
 
 ```
-curl -LO https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
+curl -LO https://huggingface.co/second-state/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-Q5_K_M.gguf
 ```
 
-This command downloads the Llama-3.1-8B-Instruct model from Huggingface, an AI model hosting platform.
+This command downloads the Llama-3.2-1B-Instruct model from Huggingface, an AI model hosting platform.
 
 ### Step 3: Download a portable chatbot app
 
@@ -45,7 +45,7 @@ curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llam
 With everything set up, it's time to run the chat app with the LLM model as follows.
 
 ```
-wasmedge --dir .:. --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf llama-chat.wasm -p llama-3-chat
+wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-1B-Instruct-Q5_K_M.gguf llama-chat.wasm -p llama-3-chat
 ```
 
 This command executes the chat application, allowing you to start interacting with the Llama 3 8B model. Here, `wasmedge` is the command to run the WasmEdge runtime, `--nn-preload` specifies the model to use with the WASI-NN plugin, and `-p` sets the prompt template for the chat.
@@ -72,7 +72,7 @@ rm chatbot-ui.tar.gz
 Then, start the web server.
 
 ```
-wasmedge --dir .:. --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf llama-api-server.wasm -p llama-3-chat
+wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-1B-Instruct-Q5_K_M.gguf llama-api-server.wasm -p llama-3-chat
 ```
 
 Go to `http://localhost:8080` on your computer to access the chatbot UI on a web page!
