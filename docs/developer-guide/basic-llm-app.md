@@ -19,8 +19,8 @@ cd wasmedge-ggml/basic
 Next, build it using the Rust `cargo` tool.
 
 ```
-cargo build --target wasm32-wasi --release
-cp target/wasm32-wasi/release/wasmedge-ggml-basic.wasm .
+cargo build --target wasm32-wasip1 --release
+cp target/wasm32-wasip1/release/wasmedge-ggml-basic.wasm .
 ```
 
 Download a non-chat LLM. This one a code completion model. You give it a request and it will respond with code that meets your request.
