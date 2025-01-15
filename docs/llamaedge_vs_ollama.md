@@ -18,7 +18,7 @@ choose LlamaEdge over them?
 Finally, LlamaEdge is a developer platform. It provides Rust APIs and components for you to build your own applications.
 It enables developers to create a single compact and cross-platform binary app that can be easily deployed and orchestrated across clouds.
 
-* The [server-side RAG](user-guide/server-side-rag/quick-start) API server is built on LlamaEdge components.
+* The [server-side RAG](user-guide/llm/server-side-rag/quick-start) API server is built on LlamaEdge components.
 * The [moxin](https://github.com/project-robius/moxin) LLM client app uses LlamaEdge as the embedded inference engine.
 * The [GaiaNet](https://github.com/GaiaNet-AI/gaianet-node) project embeds LlamaEdge to run a large number of decentralized LLM agents across the web.
 * The [Terminus OS](https://www.jointerminus.com/) project is a Kubernetes-based personal OS. It embeds LlamaEdge to power AI services such as local search and document QA.

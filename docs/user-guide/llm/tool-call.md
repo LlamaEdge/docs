@@ -14,7 +14,7 @@ In this tutorial, we will show you a simple Python program that allows a local L
 
 ## Prerequisites
 
-Follow [this guide](openai-api/intro.md) to start an LlamaEdge API server. 
+Follow [this guide](/docs/openai-api/intro.md) to start an LlamaEdge API server. 
 For example, we will need an open source model that is capable of tool calling. 
 The Groq-tuned Llama 3 8B model is a good choice. Let's download the model file. 
 

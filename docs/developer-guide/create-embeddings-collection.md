@@ -6,7 +6,7 @@ sidebar_position: 5
 
 The LlamaEdge API server project demonstrates how to support OpenAI style APIs to upload, chunck, and create embeddings for a text document. In this guide, I will show you how to use those API endpoints as a developer.
 
-> This article is intended to demonstrate capabilities of the open source API server example. You should review the API server source code to learn how those features are implemented. If you are running an RAG application with the API server, check out [this guide](../user-guide/server-side-rag/quick-start).
+> This article is intended to demonstrate capabilities of the open source API server example. You should review the API server source code to learn how those features are implemented. If you are running an RAG application with the API server, check out [this guide](../user-guide/llm/server-side-rag/quick-start).
 
 ## Build the API server
 

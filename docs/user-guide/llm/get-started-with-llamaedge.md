@@ -77,5 +77,5 @@ wasmedge --dir .:. --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_
 
 Go to `http://localhost:8080` on your computer to access the chatbot UI on a web page!
 
-Congratulations! You have now started an LLM app on your own device. But if you are interested in running an agentic app beyond the simple chatbot, you will need to start an API server for this LLM along with the embedding model. Check out [this guide on how to do it](./openai-api/intro.md)!
+Congratulations! You have now started an LLM app on your own device. But if you are interested in running an agentic app beyond the simple chatbot, you will need to start an API server for this LLM along with the embedding model. Check out [this guide on how to do it](/docs/openai-api/intro.md)!
 
