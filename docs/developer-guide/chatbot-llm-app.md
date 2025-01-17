@@ -19,8 +19,8 @@ cd wasmedge-ggml/llama
 Next, build it using the Rust `cargo` tool.
 
 ```
-cargo build --target wasm32-wasi --release
-cp target/wasm32-wasi/release/wasmedge-ggml-llama.wasm .
+cargo build --target wasm32-wasip1 --release
+cp target/wasm32-wasip1/release/wasmedge-ggml-llama.wasm .
 ```
 
 Download a chat LLM.
