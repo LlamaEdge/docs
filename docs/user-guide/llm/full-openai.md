@@ -1,8 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Start 
+# Start an OpenAI compatible API server
 
 LlamaEdge support running LLMs along with embbedding models, allowing you to start a drop-in replacement for OpenAI API.
 

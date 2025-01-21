@@ -31,34 +31,16 @@ This command downloads the Llama-3.2-1B-Instruct model from Huggingface, an AI m
 ### Step 3: Download a portable chatbot app
 
 Next, you need an application that can load the model and provide a UI to interact with the model.
-The [LlamaEdge CLI chat app](https://github.com/LlamaEdge/LlamaEdge/tree/main/chat) is a lightweight and cross-platform Wasm app that works on any device
+The [LlamaEdge api server app](https://github.com/LlamaEdge/LlamaEdge/tree/main/llama-api-server) is a lightweight and cross-platform Wasm app that works on any device
 you might have. Just download the compiled binary app.
-
-```
-curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llama-chat.wasm
-```
-
-> The LlamaEdge apps are written in Rust and compiled to portable Wasm. That means they can run across devices and OSes without any change to the binary apps. You can simply download and run the compiled wasm apps regardless of your platform.
-
-### Step 4: Chat with the Model
-
-With everything set up, it's time to run the chat app with the LLM model as follows.
-
-```
-wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-1B-Instruct-Q5_K_M.gguf llama-chat.wasm -p llama-3-chat
-```
-
-This command executes the chat application, allowing you to start interacting with the Llama 3 8B model. Here, `wasmedge` is the command to run the WasmEdge runtime, `--nn-preload` specifies the model to use with the WASI-NN plugin, and `-p` sets the prompt template for the chat.
-
-### Step 5: Chat with the chatbot UI 
-
-The command line UI is nice, but most people would prefer a web UI. The web UI also allows you to make your
-local LLM accessible to other people across the network.
-To do that, you need the [LlamaEdge API server](https://github.com/LlamaEdge/LlamaEdge/tree/main/api-server) app.
 
 ```
 curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llama-api-server.wasm
 ```
+
+> The LlamaEdge apps are written in Rust and compiled to portable Wasm. That means they can run across devices and OSes without any change to the binary apps. You can simply download and run the compiled wasm apps regardless of your platform.
+
+### Step 4: Chat with the chatbot UI 
 
 The `llama-api-server.wasm` is a web server with an OpenAI-compatible API. You still need HTML files for the chatbot UI.
 Download and unzip the HTML UI files as follows.
