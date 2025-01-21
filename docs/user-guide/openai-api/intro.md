@@ -7,60 +7,26 @@ sidebar_position: 1
 Since LlamaEdge provides an OpenAI-compatible API service, it can be a drop-in replacement for OpenAI in almost all LLM applications and frameworks. 
 Checkout the articles in this section for instructions and examples for how to use locally hosted LlamaEdge API services in popular LLM apps.
 
-But first, you will need to start an [LlamaEdge API server](https://github.com/LlamaEdge/LlamaEdge/tree/main/api-server). But the steps are a little different from just a chatbot.
+## Start the API servers for multiple models
 
-## Step 1: Install WasmEdge
+First, you will need to start an OpenAI compatible API server.
 
-```
-curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install_v2.sh | bash -s
-```
+* Start an OpenAI compatible API server for Large Language Models (LLM)
+➔ [Get Started with LLM](/docs/category/llm)
 
-## Step 2: Download an LLM model
 
-```
-curl -LO https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
-```
+* Start an OpenAI compatible API server for Whisper
+➔ [Get Started with Speech to Text](/docs/category/speech-to-text)
 
-## Step 3: Download an embedding model
+* Start an OpenAI compatible API server for GPT-SOVITs and Piper
+➔ [Get Started with Text to Speech](/docs/category/text-to-speech)
 
-```
-curl -LO https://huggingface.co/gaianet/Nomic-embed-text-v1.5-Embedding-GGUF/resolve/main/nomic-embed-text-v1.5.f16.gguf
-```
+* Start an OpenAI compatible API server for Stable Diffusion and FLUX
+➔ [Get Started with Text-to-Image](/docs/category/text-to-image)
 
-It is used by many agent and RAG apps to convert text-based knowledge into vectors for easy search and retrieval.
+* Start an OpenAI compatible API server for Llava and Qwen-VL
+➔ [Get Started with Multimodal](/docs/category/multimodal)
 
-## Step 4: Start the API server!
-
-```
-wasmedge --dir .:. \
-    --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf \
-    --nn-preload embedding:GGML:AUTO:nomic-embed-text-v1.5.f16.gguf \
-    llama-api-server.wasm \
-    --model-alias default,embedding \
-    --model-name llama-3-8b-chat,nomic-embed \
-    --prompt-template llama-3-chat,embedding \
-    --batch-size 128,8192 \
-    --ctx-size 8192,8192
-```
-
-You can learn more about these CLI options [here](https://github.com/LlamaEdge/LlamaEdge/tree/main/api-server).
-
-* The `--model-alias` specifies which of the preloaded models is for chat and embedding respectively. In this case
-  * The alias `default` corresponds to `Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf`
-  * The alias `embedding` corresponds to `nomic-embed-text-v1.5.f16.gguf`
-* The `--model-name` can be any string, and you will need it in API calls when the client wants to select a model to interact with. The two values correspond to the `default` and `embedding` model respectively.
-* The `--prompt-template` specifies the prompt template name for the chat model, and it uses `embedding` for the prompt template name for the embedding model.
-* The `--ctx-size` specifies the context window size for the `default` and `embedding` model respectively.
-* The `--batch-size` specifies the batch job size for the `default` and `embedding` model respectively.
-
-That's it. You can now test the API server by sending it a request.
-Notice that model name `llama-3-8b-chat` matches what you specified in the `llama-api-server.wasm` command.
-
-```
-curl -X POST http://0.0.0.0:8080/v1/chat/completions -H 'accept:application/json' -H 'Content-Type: application/json' -d '{"messages":[{"role":"system", "content":"You are a helpful AI assistant"}, {"role":"user", "content":"What is the capital of France?"}], "model":"llama-3-8b-chat"}'
-```
-
-You should receive a JSON message that contains a reply to the question in the response.
 
 ## OpenAI replacement
 
