@@ -16,29 +16,30 @@ In this tutorial, we will show you a simple Python program that allows a local L
 
 Follow [this guide](/docs/user-guide/openai-api/intro.md) to start an LlamaEdge API server. 
 For example, we will need an open source model that is capable of tool calling. 
-The Groq-tuned Llama 3 8B model is a good choice. Let's download the model file. 
+The Llama 3.1 8B model is a good choice. Let's download the model file. 
 
 ```
-curl -LO https://huggingface.co/second-state/Llama-3-Groq-8B-Tool-Use-GGUF/resolve/main/Llama-3-Groq-8B-Tool-Use-Q5_K_M.gguf
+curl -LO https://huggingface.co/second-state/Meta-Llama-3.1-8B-Instruct-GGUF/resolve/main/Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf
 ```
 
 Then start the LlamaEdge API server for this model as follows. 
 
 ```
 wasmedge --dir .:. \
-    --nn-preload default:GGML:AUTO:Llama-3-Groq-8B-Tool-Use-Q5_K_M.gguf \
+    --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf \
     --nn-preload embedding:GGML:AUTO:nomic-embed-text-v1.5.f16.gguf \
     llama-api-server.wasm \
     --model-alias default,embedding \
-    --model-name llama-3-groq-8b,nomic-embed \
-    --prompt-template groq-llama3-tool,embedding \
+    --model-name Meta-Llama-3.1-8B-Instruct-Q5_K_M,nomic-embed \
+    --prompt-template llama-3-tool,embedding \
     --batch-size 128,8192 \
+    --ubatch-size 128,8192 \
     --ctx-size 8192,8192
 ```
 
-Note the `groq-llama3-tool` prompt template. It constructs user queries and LLM responses, including JSON messages for tool calls, into proper formats that the model is finetuned to follow. 
+Note the `llama-3-tool` prompt template. It constructs user queries and LLM responses, including JSON messages for tool calls, into proper formats that the model is finetuned to follow. 
 
-> You can [start a Gaia node](https://github.com/GaiaNet-AI/node-configs/tree/main/llama-3-groq-8b-tool) for the Llama-3-Groq model. You can then use the node's API URL endpoint and model name in your tool call apps.
+> If you have GPU resources (i.e., over 48GB VRAM in Nvidia and Mac processors), you can use the [Llama 3.3 70B model](https://huggingface.co/second-state/Llama-3.3-70B-Instruct-GGUF/), which is better at generating JSON responses for tool calls. In fact, you can use start Gaia nodes for [Llama 3.1 8b](https://github.com/GaiaNet-AI/node-configs/tree/main/llama-3.1-8b-instruct) or [Llama 3.3 70B](https://github.com/GaiaNet-AI/node-configs/tree/main/llama-3.3-70b-instruct) LLMs in 5 minutes, and then use the node's API endpoint in your apps.
 
 ## Run the demo agent
 
