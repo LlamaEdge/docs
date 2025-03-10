@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Quick start with the Llava mdoels
+# Quick start with the Llava models
 
 [Llava-v1.6-Vicuna-7B](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b) is open-source community's answer to OpenAI's multimodal GPT-4-V. It is also known as a Visual Language Model for its ability to handle visual images and language in a conversation.  This guide shows you how to set up and run Llava-v1.6-Vicuna-7B using the LlamaEdge Llama API server server, which provides an OpenAI-compatible API interface.
 
