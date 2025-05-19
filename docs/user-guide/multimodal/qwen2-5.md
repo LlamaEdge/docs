@@ -80,7 +80,7 @@ Then, go to `http://localhost:8080` on your computer to access the chatbot UI on
 
 ### Step 5: Send an API request
 
-You can send an API request to call the model, which is more universal. The following command demonstrates how to send a CURL request to llama-api-server. The request includes a base64-encoded string of an image in the `image_url` field. For demonstration purposes, only a portion of the base64 string is shown here. In practice, you should use the complete base64 string. The full base64 string used in the following request can be found in [image_b64.txt](../assets/image_b64.txt).
+You can send an API request to call the model, which is more universal. The following command demonstrates how to send a CURL request to llama-api-server. The request includes a base64-encoded string of an image in the `image_url` field. For demonstration purposes, only a portion of the base64 string is shown here. In practice, you should use the complete base64 string.
 
 > [!TIP]
 > [base64.guru](https://base64.guru/converter/encode/image/jpg) provides a tool for encoding JPG to Base64.
