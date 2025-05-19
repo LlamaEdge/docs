@@ -55,7 +55,7 @@ Then, start the web server.
 ```
 wasmedge --dir .:. --nn-preload default:GGML:AUTO:gemma-3-4b-it-Q5_K_M.gguf \
   llama-api-server.wasm \
-  --prompt-template gemma-instruct \
+  --prompt-template gemma-3 \
   --llava-mmproj gemma-3-4b-it-mmproj-f16.gguf \
   --ctx-size 4096 \
   --model-name gemma-3-4b
