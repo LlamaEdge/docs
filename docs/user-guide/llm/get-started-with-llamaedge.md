@@ -28,9 +28,9 @@ curl -LO https://huggingface.co/second-state/Llama-3.2-1B-Instruct-GGUF/resolve/
 
 This command downloads the Llama-3.2-1B-Instruct model from Huggingface, an AI model hosting platform.
 
-### Step 3: Download a portable chatbot app
+### Step 3: Download a portable API server app
 
-Next, you need an application that can load the model and provide a UI to interact with the model.
+Next, you need an application that can build an OpenAI compatible API server for the model.
 The [LlamaEdge api server app](https://github.com/LlamaEdge/LlamaEdge/tree/main/llama-api-server) is a lightweight and cross-platform Wasm app that works on any device
 you might have. Just download the compiled binary app.
 
