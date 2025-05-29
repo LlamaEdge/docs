@@ -142,5 +142,12 @@ If the request is processed successfully, you will receive a response similar to
 }
 ```
 
+You can also combine the base64 conversion and API call into a single command like this:
+
+```bash
+curl --location 'http://localhost:8080/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{"messages": [{"role": "system","content": "You are a helpful assistant that accurately describes the content of images provided by the user."}, {"content": [{"type": "text","text": "Tell me the history of this place"},{"type": "image_url","image_url": {"url": "'"$(base64 -i /path/to/image.jpg)"'"}}], "role": "user"}], "model": "gemma-3-4b"}'
+```
 
 Congratulations! You have now started an multimodal app on your own device.
