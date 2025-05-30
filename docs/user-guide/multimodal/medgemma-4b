@@ -78,7 +78,7 @@ Upon successful execution, you should see output similar to the following:
 
 Then, go to `http://localhost:8080` on your computer to access the chatbot UI on a web page! You can upload an imange and chat with the model based on the medical image.
 
-
+![](medgemma.jpg)
 
 ### Step 5: Send an API request
 
@@ -87,15 +87,69 @@ You can send an API request to call the model, which is more universal. The foll
 > [!TIP]
 > [base64.guru](https://base64.guru/converter/encode/image/jpg) provides a tool for encoding JPG to Base64.
 
-
+```bash
+curl --location 'http://localhost:8080/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful medical assistant that accurately describes the content of images provided by the user."
+        },
+        {
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Read this chest X-ray and find anything abnormal"
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQg......X/VaTer/ALzOU/Lg1XMiLMuR3EWMb77/AHsD/DNTIhXPnmvLmwj"
+                    }
+                }
+            ],
+            "role": "user"
+        }
+    ],
+    "model": "medgemma-4b"
+}'
+```
 
 
 If the request is processed successfully, you will receive a response similar to the following:
 
-
+```bash
+{
+    "id": "chatcmpl-e5f777db-c913-45ab-b37f-e2c499c8fa0b",
+    "object": "chat.completion",
+    "created": 1747652210,
+    "model": "medgemma-4b",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "content": "There is a round, dense opacity in the right lower lobe of the lung. This could be a mass or nodule, and further investigation would be needed to determine its nature.",
+                "role": "assistant"
+            },
+            "finish_reason": "stop",
+            "logprobs": null
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 27,
+        "completion_tokens": 68,
+        "total_tokens": 95
+    }
+}
+```
 
 You can also combine the base64 conversion and API call into a single command like this:
 
-
+```bash
+curl --location 'http://localhost:8080/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{"messages": [{"role": "system","content": "You are a helpful medical assistant that accurately describes the content of images provided by the user."}, {"content": [{"type": "text","text": ""Read this chest X-ray and find anything abnormal"},{"type": "image_url","image_url": {"url": "'"$(base64 -i /path/to/image.jpg)"'"}}], "role": "user"}], "model": "medgemma-4b"}'
+```
 
 Congratulations! You have now started an multimodal app on your own device.
