@@ -85,7 +85,7 @@ Finally, use the following command lines to start an API server for the model.  
 
 
 ```
-wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-2-7b-chat-hf-Q5_K_M.gguf llama-api-server.wasm -p llama-2-chat -c 4096
+wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-2-7b-chat-hf-Q5_K_M.gguf llama-api-server.wasm -p llama-2-chat -c 4096 -m NA
 ```
 
 
