@@ -30,7 +30,7 @@ By default, Llama-Nexus listens on port `3389`.
 
 Assuming you already have an OpenAI-compatible API server for your LLM, let‘s register it with Llama-Nexus.
 
-If you’d like to run a model locally, refer to the [Quick Start with LlamaEdge](../user-guide/llm/get-started-with-llamaedge.md) guide.
+If you'd like to run a model locally, refer to the [Quick Start with LLM](../ai-models/llm/quick-start-llm.md) guide.
 
 Register the LLM chat API server for the `/chat/completions` endpoint:
 

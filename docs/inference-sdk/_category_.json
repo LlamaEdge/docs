@@ -1,0 +1,8 @@
+{
+  "label": "Embed AI models",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Embed AI models, such as LLMs, into your own apps using the LlamaEdge inference SDK."
+  }
+}

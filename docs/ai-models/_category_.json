@@ -1,0 +1,8 @@
+{
+  "label": "Serve AI models",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Serve open-source AI models via web APIs."
+  }
+}
