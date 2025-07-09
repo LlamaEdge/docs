@@ -15,9 +15,9 @@ Explore the LLM capabilities
 Work with vision-language models like Llava and Qwen-VL
 ➔ [Get Started with Multimodal](/docs/category/multimodal)
 
-## 👁️ Mu Embeddings
+## 👁️  Embeddings
 Work with embedding models for vector and semantic search
-➔ [Get Started with Multimodal](/docs/category/mulembeddings)
+➔ [Get Started with Multimodal](/docs/category/embeddings)
 
 ## 🎙️ Speech to Text
 Run speech-to-text models like Whisper

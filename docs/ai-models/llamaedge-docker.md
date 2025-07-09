@@ -96,5 +96,5 @@ docker push secondstate/qwen-2-0.5b-allminilm-2:latest
 
 ## What's next
 
-Use the container as a drop-in replacement for the OpenAI API for your favorite agent app or framework! [See some examples here](openai-api/intro.md). 
+Use the container as a drop-in replacement for the OpenAI API for your favorite agent app or framework! [See some examples here](../llama-nexus/openai-api/intro.md). 
 

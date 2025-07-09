@@ -2,35 +2,15 @@
 sidebar_position: 1
 ---
 
-# Start an LlamaEdge API service
+# Start the llama-nexus API service
 
 Since LlamaEdge provides an OpenAI-compatible API service, it can be a drop-in replacement for OpenAI in almost all LLM applications and frameworks. 
-Checkout the articles in this section for instructions and examples for how to use locally hosted LlamaEdge API services in popular LLM apps.
-
-## Start the API servers for multiple models
-
-First, you will need to start an OpenAI compatible API server.
-
-* Start an OpenAI compatible API server for Large Language Models (LLM)
-➔ [Get Started with LLM](/docs/category/llm)
-
-
-* Start an OpenAI compatible API server for Whisper
-➔ [Get Started with Speech to Text](/docs/category/speech-to-text)
-
-* Start an OpenAI compatible API server for GPT-SOVITs and Piper
-➔ [Get Started with Text to Speech](/docs/category/text-to-speech)
-
-* Start an OpenAI compatible API server for Stable Diffusion and FLUX
-➔ [Get Started with Text-to-Image](/docs/category/text-to-image)
-
-* Start an OpenAI compatible API server for Llava and Qwen-VL
-➔ [Get Started with Multimodal](/docs/category/multimodal)
+You can start LlamaEdge API servers for individual AI models, and use llama-nexus to combine multiple AI models
+into a single API server.
 
 
 ## OpenAI replacement
 
-Now, you can ready to use this API server in OpenAI ecosystem apps as a drop-in replacement for the OpenAI API!
 In general, for any OpenAI tool, you could just replace the following.
 
 |Config option | Value | Note |
