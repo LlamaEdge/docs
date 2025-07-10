@@ -14,7 +14,7 @@ In this tutorial, we will show you a simple Python program that allows a local L
 
 ## Prerequisites
 
-Follow [this guide](/docs/user-guide/openai-api/intro.md) to start an LlamaEdge API server. 
+Follow [this guide](quick-start-llm.md) to start an LlamaEdge API server. 
 For example, we will need an open source model that is capable of tool calling. 
 The Llama 3.1 8B model is a good choice. Let's download the model file. 
 
@@ -27,14 +27,12 @@ Then start the LlamaEdge API server for this model as follows.
 ```
 wasmedge --dir .:. \
     --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf \
-    --nn-preload embedding:GGML:AUTO:nomic-embed-text-v1.5.f16.gguf \
     llama-api-server.wasm \
-    --model-alias default,embedding \
-    --model-name Meta-Llama-3.1-8B-Instruct-Q5_K_M,nomic-embed \
-    --prompt-template llama-3-tool,embedding \
-    --batch-size 128,8192 \
-    --ubatch-size 128,8192 \
-    --ctx-size 8192,8192
+    --model-name Meta-Llama-3.1-8B-Instruct-Q5_K_M \
+    --prompt-template llama-3-tool \
+    --batch-size 128 \
+    --ubatch-size 128 \
+    --ctx-size 8192
 ```
 
 Note the `llama-3-tool` prompt template. It constructs user queries and LLM responses, including JSON messages for tool calls, into proper formats that the model is finetuned to follow. 
@@ -56,7 +54,7 @@ pip install -r requirements.txt
 Set the environment variables for the API server and model name we just set up. 
 
 ```
-export OPENAI_MODEL_NAME="llama-3-groq-8b"
+export OPENAI_MODEL_NAME="Meta-Llama-3.1-8B-Instruct-Q5_K_M"
 export OPENAI_BASE_URL="http://127.0.0.1:8080/v1"
 ```
 

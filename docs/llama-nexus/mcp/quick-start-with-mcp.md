@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Qucik start with the MCP support
+# Quick start with MCP servers
 
 One of the key features of Llama-Nexus is its built-in MCP Client, which allows you to use Llama-Nexus for MCP-related tasks just like Claude Desktop and Cursor.
 
@@ -115,6 +115,7 @@ curl -X POST http://localhost:9095/v1/chat/completions \
 ```
 
 Expected output:
+
 ```json
 {
   "id": "chatcmpl-cf63660e-3494-472c-b4d0-6cda72e1f8e9",

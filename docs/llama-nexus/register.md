@@ -2,13 +2,16 @@
 sidebar_position: 3
 ---
 
-# Register and Unregister 
+# Register API services
 
-Llama Nexus supports all common LLM services. Your API service must follow OpenAI specifications.
+You can add almost any OpenAI-compatible API services to the Llama-Nexus gateway.
+In this chapter, we demonstrate how various LlamaEdge API servers could be registered 
+under a single Llama Nexus gateway. This gateway will be able to provide all OpenAI API
+endpoints supported by these registered API servers. 
 
 ## Prerequisites
 
-- Llama Nexus server running (default port: 9095)
+- Llama Nexus server running (default port: 3389)
 - Target services running and accessible
 - Services implementing OpenAI-compatible APIs
 
@@ -78,10 +81,6 @@ curl --location 'http://localhost:3389/admin/servers/register' \
     "kind": "tts"
 }'
 ```
-
-## Unregister
-
-To be add
 
 ## Notes
 

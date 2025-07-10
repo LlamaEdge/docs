@@ -40,10 +40,37 @@ curl -LO https://github.com/second-state/LlamaEdge/releases/latest/download/llam
 
 > The LlamaEdge apps are written in Rust and compiled to portable Wasm. That means they can run across devices and OSes without any change to the binary apps. You can simply download and run the compiled wasm apps regardless of your platform.
 
-### Step 4: Chat with the chatbot UI 
 
-The `llama-api-server.wasm` is a web server with an OpenAI-compatible API. You still need HTML files for the chatbot UI.
-Download and unzip the HTML UI files as follows.
+### Step 4: Use the API
+
+Start the web server by running the `llama-api-server.wasm` app in WasmEdge.
+
+```
+wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-1B-Instruct-Q5_K_M.gguf llama-api-server.wasm -p llama-3-chat
+```
+
+The `llama-api-server.wasm` is a web server.
+You can use the OpenAI-compatible `/chat/completions` API endpoint directly.
+
+```
+curl -X POST http://localhost:8080/v1/chat/completions \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{"messages":[{"role":"system", "content": "You are a helpful assistant. Try to be as brief as possible."}, {"role":"user", "content": "Where is the capital of Texas?"}]}'
+```
+
+The response is.
+
+```
+{"id":"chatcmpl-5f0b5247-7afc-45f8-bc48-614712396a05","object":"chat.completion","created":1751945744,"model":"Mistral-Small-3.1-24B-Instruct-2503-Q5_K_M","choices":[{"index":0,"message":{"content":"The capital of Texas is Austin.","role":"assistant"},"finish_reason":"stop","logprobs":null}],"usage":{"prompt_tokens":38,"completion_tokens":8,"total_tokens":46}}
+```
+
+### Step 5: Chat with the chatbot UI 
+
+The Chatbot UI is a web app that can interact with the OpenAI-compatible `/chat/completions` API to
+provide a human-friendly chatbot in your browser.
+
+Download and unzip the HTML and JS files for the Chatbot UI as follows.
 
 ```
 curl -LO https://github.com/LlamaEdge/chatbot-ui/releases/latest/download/chatbot-ui.tar.gz
@@ -51,7 +78,7 @@ tar xzf chatbot-ui.tar.gz
 rm chatbot-ui.tar.gz
 ```
 
-Then, start the web server.
+Restart the web server to serve those HTML and JS files.
 
 ```
 wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-1B-Instruct-Q5_K_M.gguf llama-api-server.wasm -p llama-3-chat
@@ -59,5 +86,5 @@ wasmedge --dir .:. --nn-preload default:GGML:AUTO:Llama-3.2-1B-Instruct-Q5_K_M.g
 
 Go to `http://localhost:8080` on your computer to access the chatbot UI on a web page!
 
-Congratulations! You have now started an LLM app on your own device. But if you are interested in running an agentic app beyond the simple chatbot, you will need to start an API server for this LLM along with the embedding model. Check out [this guide on how to do it](/docs/user-guide/openai-api/intro.md)!
+Congratulations! You have now started an LLM app on your own device.
 
