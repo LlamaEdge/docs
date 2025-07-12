@@ -17,10 +17,10 @@ This tutorial shows how to set up real-time weather functionality with Llama-Nex
 ## 1. Set Up Your MCP Server
 
 ```bash
-curl -LO https://github.com/decentralized-mcp/gaia-mcp-servers/releases/download/0.6.0/gaia-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
-tar xvf gaia-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
+curl -LO https://github.com/cardea-mcp/cardea-mcp-servers/releases/download/0.7.0/cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
+tar xvf cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
 ```
-> Download for your platform: https://github.com/decentralized-mcp/gaia-mcp-servers/releases/tag/0.6.0
+> Download for your platform: https://github.com/cardea-mcp/cardea-mcp-servers/releases/tag/0.7.0
 
 Set the environment variables:
 
@@ -33,7 +33,7 @@ export LLAMA_LOG=debug
 Run the MCP server (accessible from external connections):
 
 ```bash
-./gaia-weather-mcp-server --transport stream-http --socket-addr 0.0.0.0:8002
+./cardea-weather-mcp-server --transport stream-http --socket-addr 0.0.0.0:8002
 ```
 
 **Important**: Ensure port 8002 is open in your firewall/security group settings if you're running on a cloud machine.
@@ -89,17 +89,6 @@ curl --location 'http://localhost:9095/admin/servers/register' \
 --data '{
     "url": "https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains",
     "kind": "chat"
-}'
-```
-
-Register an embedding API server for the `/embeddings` endpoint:
-
-```bash
-curl --location 'http://localhost:9095/admin/servers/register' \
---header 'Content-Type: application/json' \
---data '{
-    "url": "https://0x448f0405310a9258cd5eab5f25f15679808c5db2.gaia.domains",
-    "kind": "embeddings"
 }'
 ```
 
