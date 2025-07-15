@@ -37,4 +37,4 @@ curl -X POST http://localhost:3389/v1/chat/completions \
   -d '{"messages":[{"role":"system", "content": "You are a helpful assisstant.If the user asks a question, you will use the  tool call to answer user question."},{"role":"user", "content": "Send an email to vivian@gamil.com and told her the dinner is cancelled, becuase I have a business meeting."}]}'
 ```
 
-If everything goes well, the email will be sent automactailly
+If you're using an email MCP server like Gmail, the email will be sent automactailly to the designated email address.
