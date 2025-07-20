@@ -61,12 +61,12 @@ host = "0.0.0.0" # The host to listen on
 port = 9095      # The port to listen on
 ```
 
-Configure the Gaia Weather MCP server connection:
+Configure the Weather MCP server connection:
 
-gai
+
 ```toml
 [[mcp.server.tool]]
-name      = "gaia-weather"
+name      = "Cardea-weather"
 transport = "stream-http"
 url       = "http://YOUR-IP-ADDRESS:8002/mcp"
 enable    = true
@@ -94,7 +94,7 @@ curl --location 'http://localhost:9095/admin/servers/register' \
 
 ## 3. Test the Setup
 
-Test the inference server by requesting the `/chat/completions` API endpoint:
+Test the inference server by requesting the `/chat/completions` API endpoint, which is OpenAI-compatible:
 
 ```bash
 curl -X POST http://localhost:9095/v1/chat/completions \
