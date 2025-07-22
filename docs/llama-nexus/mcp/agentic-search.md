@@ -175,13 +175,13 @@ You will see that both the Qdrant vector collection and TiDB table are populated
 Install the agentic search MCP server for Linux on x86.
 
 ```
-curl -LO https://github.com/cardea-mcp/cardea-mcp-servers/releases/download/0.7.0/cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
+curl -LO https://github.com/cardea-mcp/cardea-mcp-servers/releases/download/0.8.0/cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
 
 gunzip cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
 tar xvf cardea-mcp-servers-unknown-linux-gnu-x86_64.tar
 ```
 
-> Download for your platform: https://github.com/cardea-mcp/cardea-mcp-servers/releases/tag/0.7.0/
+> Download for your platform: https://github.com/cardea-mcp/cardea-mcp-servers/releases/tag/0.8.0/
 
 Set the environment variables. The `TIDB_CONNECTION` is the TiDB connection URL from above, which includes the username and password. The `QDRANT_BASE_URL` is the Qdrant cluster connection URL, and it defaults to `http://localhost:6333`.
 
@@ -193,23 +193,22 @@ export QDRANT_BASE_URL=https://bb8ab5cf-eae2-4c7c-9493-5f7a183c89b8.us-east4-0.g
 export QDRANT_API_KEY=xxxxxxxx
 ```
 
-Start the agentic search MCP server with database connection parameters. Make sure that you adjust the `--search-tool-desc` and `--search-tool-param-desc` to describe the search queries that can be performed for this database.
+Start the agentic search MCP server with database connection parameters. Make sure that you adjust the `--search-tool-prompt` to describe the search queries that can be performed for this database.
 
 ```
 nohup ./cardea-agentic-search-mcp-server \
     --socket-addr 127.0.0.1:9096 \
     --transport stream-http \
-    --search-tool-desc "You MUST call the search() tool before you answer any factual question. Create a question from the user query and relevant context, and pass the question as a string to the tool call." \
-    --search-tool-param-desc "The question to search for answers." \
+    --search-tool-prompt "You MUST call the search() tool before you answer any factual question. Create a question from the user query and relevant context, and pass the question as a string to the tool call." \
     search \
     --qdrant-collection myPoints \
     --qdrant-payload-field "full_text" \
     --tidb-ssl-ca /etc/ssl/certs/ca-certificates.crt \
     --tidb-table-name myItems \
-    --chat-service https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains \
-    --embedding-service https://0x448f0405310a9258cd5eab5f25f15679808c5db2.gaia.domains \
+    --chat-service https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains/v1 \
+    --embedding-service https://0x448f0405310a9258cd5eab5f25f15679808c5db2.gaia.domains/v1 \
     --limit 5 \
-    --score-threshold 0.8 &
+    --score-threshold 0.5 &
 ```
 
 The MCP server is started on port `9096`. 
@@ -221,13 +220,13 @@ The MCP server is started on port `9096`.
 The following command installs the Linux on x86 version of llama-nexus.
 
 ```
-curl -LO https://github.com/LlamaEdge/llama-nexus/releases/download/0.5.0/llama-nexus-unknown-linux-gnu-x86_64.tar.gz
+curl -LO https://github.com/LlamaEdge/llama-nexus/releases/download/0.6.0/llama-nexus-unknown-linux-gnu-x86_64.tar.gz
 
 gunzip llama-nexus-unknown-linux-gnu-x86_64.tar.gz
 tar xvf llama-nexus-unknown-linux-gnu-x86_64.tar
 ```
 
-> Download for your platfrom here: https://github.com/LlamaEdge/llama-nexus/releases/tag/0.5.0/
+> Download for your platfrom here: https://github.com/LlamaEdge/llama-nexus/releases/tag/0.6.0/
 
 ### Configure llama-nexus
 
@@ -264,7 +263,7 @@ Register an LLM chat API server for the `/chat/completions` endpoint.
 curl --location 'http://localhost:9095/admin/servers/register' \
 --header 'Content-Type: application/json' \
 --data '{
-    "url": "https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains",
+    "url": "https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains/v1",
     "kind": "chat"
 }'
 ```
@@ -275,10 +274,12 @@ Register an embedding API server for the `/embeddings` endpoint.
 curl --location 'http://localhost:9095/admin/servers/register' \
 --header 'Content-Type: application/json' \
 --data '{
-    "url": "https://0x448f0405310a9258cd5eab5f25f15679808c5db2.gaia.domains",
+    "url": "https://0x448f0405310a9258cd5eab5f25f15679808c5db2.gaia.domains/v1",
     "kind": "embeddings"
 }'
 ```
+
+> You can add an `api-key` field in the `data` structure for API servers that require API key access.
 
 ## Test the inference server
 
