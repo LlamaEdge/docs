@@ -17,10 +17,10 @@ This tutorial shows how to set up real-time weather functionality with Llama-Nex
 ## 1. Set Up Your MCP Server
 
 ```bash
-curl -LO https://github.com/cardea-mcp/cardea-mcp-servers/releases/download/0.7.0/cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
+curl -LO https://github.com/cardea-mcp/cardea-mcp-servers/releases/download/0.8.0/cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
 tar xvf cardea-mcp-servers-unknown-linux-gnu-x86_64.tar.gz
 ```
-> Download for your platform: https://github.com/cardea-mcp/cardea-mcp-servers/releases/tag/0.7.0
+> Download for your platform: https://github.com/cardea-mcp/cardea-mcp-servers/releases/tag/0.8.0
 
 Set the environment variables:
 
@@ -45,11 +45,11 @@ Run the MCP server (accessible from external connections):
 Download and extract llama-nexus:
 
 ```bash
-curl -LO https://github.com/LlamaEdge/llama-nexus/releases/download/0.5.0/llama-nexus-apple-darwin-aarch64.tar.gz
+curl -LO https://github.com/LlamaEdge/llama-nexus/releases/download/0.6.0/llama-nexus-apple-darwin-aarch64.tar.gz
 tar xvf llama-nexus-apple-darwin-aarch64.tar.gz
 ```
 
-> Download for your platform: https://github.com/LlamaEdge/llama-nexus/releases/tag/0.5.0
+> Download for your platform: https://github.com/LlamaEdge/llama-nexus/releases/tag/0.6.0
 
 ### Configure llama-nexus
 
@@ -87,10 +87,12 @@ Register an LLM chat API server for the `/chat/completions` endpoint:
 curl --location 'http://localhost:9095/admin/servers/register' \
 --header 'Content-Type: application/json' \
 --data '{
-    "url": "https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains",
+    "url": "https://0xb2962131564bc854ece7b0f7c8c9a8345847abfb.gaia.domains/v1",
     "kind": "chat"
 }'
 ```
+
+> If your API server requires an API key access, you can add an `api-key` field in the registration request.
 
 ## 3. Test the Setup
 
