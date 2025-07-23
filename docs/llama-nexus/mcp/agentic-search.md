@@ -199,7 +199,6 @@ Start the agentic search MCP server with database connection parameters. Make su
 nohup ./cardea-agentic-search-mcp-server \
     --socket-addr 127.0.0.1:9096 \
     --transport stream-http \
-    --search-tool-prompt "You MUST call the search() tool before you answer any factual question. Create a question from the user query and relevant context, and pass the question as a string to the tool call." \
     search \
     --qdrant-collection myPoints \
     --qdrant-payload-field "full_text" \
