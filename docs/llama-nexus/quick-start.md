@@ -11,12 +11,12 @@ This tutorial shows you how to use **Llama-Nexus** to manage multiple OpenAI-com
 The following command installs the Linux on x86 version of llama-nexus.
 
 ```
-curl -LO https://github.com/LlamaEdge/llama-nexus/releases/download/0.5.0/llama-nexus-unknown-linux-gnu-x86_64.tar.gz
+curl -LO https://github.com/LlamaEdge/llama-nexus/releases/latest/download/llama-nexus-unknown-linux-gnu-x86_64.tar.gz
 
 tar xvf llama-nexus-unknown-linux-gnu-x86_64.tar
 ```
 
-> Download for your platfrom here: https://github.com/LlamaEdge/llama-nexus/releases/tag/0.5.0
+> Download for your platfrom here: https://github.com/LlamaEdge/llama-nexus/releases/
 
 ## Start Llama-Nexus
 
@@ -39,7 +39,7 @@ curl --location 'http://localhost:3389/admin/servers/register' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer YOUR_API_KEY_GOES_HERE' \
 --data '{
-    "url": "http://localhost:8080",
+    "url": "http://localhost:8080/v1",
     "kind": "chat"
 }'
 ```
@@ -53,8 +53,8 @@ To register multiple services, repeat the request with different URLs.
 Since Llama-Nexus is OpenAI-compatible, you can use any OpenAI-compatible client or the API spec to call your services:
 
 ```bash
-curl -X POST http://localhost:9095/v1/chat/completions \
+curl -X POST http://localhost:3389/v1/chat/completions \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
-  -d '{"messages":[{"role":"system", "content": "You are a helpful assistant."},{"role":"user", "content": "What is the weather in Singapore?"}]}'
+  -d '{"messages":[{"role":"system", "content": "You are a helpful assistant."},{"role":"user", "content": "What is the weather in Singapore?"}], "model": "your_model_name"}'
 ```
