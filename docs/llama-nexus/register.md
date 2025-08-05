@@ -24,8 +24,9 @@ Register a chat completion service that handles `/v1/chat/completions` requests:
 ```bash
 curl --location 'http://localhost:3389/admin/servers/register' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_API_KEY_GOES_HERE' \
 --data '{
-    "url": "http://localhost:8080",
+    "url": "http://localhost:8080/v1",
     "kind": "chat"
 }'
 ```
@@ -37,8 +38,9 @@ Register an embedding service that handles `/v1/embeddings` requests:
 ```bash
 curl --location 'http://localhost:3389/admin/servers/register' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_API_KEY_GOES_HERE' \
 --data '{
-    "url": "https://0x448f0405310a9258cd5eab5f25f15679808c5db2.gaia.domains",
+    "url": "http://localhost:8080/v1",
     "kind": "embeddings"
 }'
 ```
@@ -50,8 +52,9 @@ Register an image generation service that handles `/v1/images/generations` reque
 ```bash
 curl --location 'http://localhost:3389/admin/servers/register' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_API_KEY_GOES_HERE' \
 --data '{
-    "url": "http://localhost:10010",
+    "url": "http://localhost:8080/v1",
     "kind": "image"
 }'
 ```
@@ -63,8 +66,9 @@ Register a transcription service that handles `/v1/audio/transcriptions` request
 ```bash
 curl --location 'http://localhost:3389/admin/servers/register' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_API_KEY_GOES_HERE' \
 --data '{
-    "url": "http://localhost:10010",
+    "url": "http://localhost:8080/v1",
     "kind": "transcribe"
 }'
 ```
@@ -76,8 +80,9 @@ Register a text-to-speech service that handles `/v1/audio/speech` requests:
 ```bash
 curl --location 'http://localhost:3389/admin/servers/register' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YOUR_API_KEY_GOES_HERE' \
 --data '{
-    "url": "http://localhost:10010",
+    "url": "http://localhost:8080/v1",
     "kind": "tts"
 }'
 ```
@@ -85,5 +90,5 @@ curl --location 'http://localhost:3389/admin/servers/register' \
 ## Notes
 
 - All services must implement OpenAI-compatible APIs
-- URLs can be local (`http://localhost:port`) or remote (`https://domain.com`)
+- URLs can be local (`http://localhost:port/v1`) or remote (`https://domain.com/v1`)
 - Services are automatically load-balanced if multiple instances of the same kind are registered
